@@ -1,7 +1,5 @@
-type HeaderProps = {
-    title: string
-}
-
-export default function Header(props: HeaderProps) {
-    return <h1>{props.title ? props.title : 'Default title'}</h1>;
+export default function Header() {
+    return <div className="dMainTitle">
+        <h1 id="MainTitle">Drag Race Simulator!</h1>
+    </div>;
 }
