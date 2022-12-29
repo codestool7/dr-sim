@@ -1,6 +1,18 @@
-import React from "react";
+import React from 'react';
+import { AppProps, AppState } from '../misc/types';
 
-export default class ClassPicker extends React.Component {
+export default class ClassPicker extends React.Component<AppProps, AppState> {
+    constructor(props: AppProps) {
+        super(props);
+        this.state = {};
+    }
+    
+    componentDidMount() {
+    }
+    
+    componentWillUnmount() {
+    }
+
     render() {
         return <div className="mainPart" id="MainBlock">
             <p><big>This is your chance to simulate a drag race season with all your favorite contestants!</big></p>

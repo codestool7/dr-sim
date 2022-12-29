@@ -974,3 +974,17 @@ export const multipleQueensRelation = [
     "are talking a lot and the others think that they are dating.",
     "shared personal memories to each other."
 ];
+
+export const queens = [
+    
+];
+
+// I don't love that this matches to name strings instead of something more permanent but it'll do for now
+export const teamNames = [
+    {queens: ["Latrice Royale", "Manila Luzon"], teamName: "Latrila"},
+    {queens: ["Alexis Mateo", "Yara Sofia"], teamName: "Yarlexis"},
+    {queens: ["Chad Michaels", "Shannel"], teamName: "Shad"},
+    {queens: ["Nina Flowers", "Tammie Brown"], teamName: "Brown Flowers"},
+    {queens: ["Raven", "Jujubee"], teamName: "Rujubee"},
+    {queens: ["Mimi Imfurst", "Pandora Boxx"], teamName: "Mandora"}
+];
