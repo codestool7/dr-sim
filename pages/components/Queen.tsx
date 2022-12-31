@@ -1,7 +1,7 @@
 import { randomNumberWithMin } from "../misc/utils";
 
 export default class Queen {
-    trackRecord = [];
+    trackRecord: string[] = [];
     friends = [];
     enemies = [];
     sisters = [];
@@ -46,12 +46,15 @@ export default class Queen {
         this.improvStat = improv;
         this.runwayStat = runway;
         this.lipsyncStat = lipsync;
-        if (image == "noimage")
+        if (image == "noimage") {
             this.image = "image/queens/noimage.jpg";
-        else if (custom == true)
+        }
+        else if (custom == true) {
             this.image = image;
-        else
+        }
+        else {
             this.image = "image/queens/" + image + ".webp";
+        }
     }
     
     calculateScores(min: number, max: number, stat = 0) {
@@ -93,6 +96,10 @@ export default class Queen {
 
     getLipSyncStat() {
         return this.lipsyncStat;
+    }
+
+    getFinaleScore() {
+        this.finaleScore = this.favoritism - this.unfavoritism;
     }
 
     rollActingScore() {
@@ -143,10 +150,6 @@ export default class Queen {
         this.performanceScore = this.calculateScores(15, 35, randomNumberWithMin(1, 35));
     }
 
-    rollFinaleScore() {
-        this.finaleScore = this.favoritism - this.unfavoritism;
-    }
-
     // TODO come back to this... this one is supposed to be the runway at the end and the other is when there's a runway CHALLENGE but I hate this whole system so I'm just doing this for now idfk
     rollRunwayScore2() {
         this.runwayScore = this.calculateScores(12, 35, this.runwayStat);
@@ -160,11 +163,11 @@ export default class Queen {
         this.lipsyncScore = this.calculateScores(0, this.lipsyncStat);
     }
 
-    addToTrackRecord(placement) {
+    addToTrackRecord(placement: string) {
         this.trackRecord.push(placement);
     }
-
-    editTrackRecord(added) {
+    
+    editTrackRecord(added: string) {
         this.trackRecord[this.trackRecord.length - 1] += added;
     }
 }

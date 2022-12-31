@@ -1,6 +1,6 @@
 import { pickRandomlyFromArray, pickBallTheme, randomNumber, randomNumberWithMin } from "../misc/utils";
 import {queensReads, whoWhyCompetition, whoWhyRelation, lipsyncsEventsBad, lipsyncsEventsGood, miniChallengeDescriptions1, miniChallengeDescriptions2, actingChallengeDescriptions1, actingChallengeDescriptions2, comedyChallengeDescriptions1, comedyChallengeDescriptions2, marketingDescriptions1, marketingDescriptions2, danceDescriptions, designDescriptions, makeoverOptions, runwayDescriptions, improvDescriptions, rusicalDescriptions, themedBallDescriptions, ballDescriptions1, ballDescriptions2, ballDescriptions3, rumixDescriptions, girlGroupDescriptions, talentOptions, reasoningQueens, twoQueensRelation1, twoQueensRelation2, twoQueensRelation3, twoQueensRelation3_2, twoQueensRelation4, twoQueensRelation4_2, twoQueensRelation5, threeQueensRelation1, threeQueensRelation2, threeQueensRelation3, threeQueensRelation4, fourQueensRelation1, fourQueensRelation2, fourQueensRelation3, fourQueensRelation4, multipleQueensRelation} from "../misc/constants";
-
+/* 
 // TODO all of this scene logic is just manipulating dom, needs to be in body I think
 export class Scene {
     constructor() {
@@ -164,13 +164,13 @@ export class ComedyChallenge {
         let description = document.querySelector("b#Description");
         let whatChallengeIs;
         if (currentCast.length > 8) {
-            whatChallengeIs = 0;
+            whatChallengeIs = comedyChallengeDescriptions1[0];
             episodeChallenges.push("Stand Up");
         } else {
-            whatChallengeIs = 1;
+            whatChallengeIs = comedyChallengeDescriptions1[1];
             episodeChallenges.push("Roast");
         }
-        description.innerHTML = "The queens will participate in " + pickRandomlyFromArray(comedyChallengeDescriptions1) + " about " + pickRandomlyFromArray(comedyChallengeDescriptions2);
+        description.innerHTML = "The queens will participate in " + whatChallengeIs + " about " + pickRandomlyFromArray(comedyChallengeDescriptions2);
     }
     rankPerformances() {
         for (let i = 0; i < currentCast.length; i++)
@@ -344,3 +344,4 @@ export class TalentShow {
         sortPerformances(currentCast);
     }
 }
+ */

@@ -8,8 +8,7 @@ export default class Team extends Queen {
 
     constructor(queenA: Queen, queenB: Queen) {
         let queens = [queenA, queenB];
-        let sortedQueens = collection.orderBy(queens, [queen => queen.getName()], ['asc']); // TODO how to add queen type?
-
+        let sortedQueens = collection.orderBy(queens, [(queen: { getName: () => string; }) => queen.getName()], ['asc']);
         let queen1 = sortedQueens[0];
         let queen2 = sortedQueens[1];
         let name = getPredeterminedTeamName(queen1, queen2);
@@ -34,15 +33,15 @@ export default class Team extends Queen {
 }
 
 function getPredeterminedTeamName(q1: Queen, q2: Queen): string {
-    if (q1.getName() === "Mrs. Kasha Davis") {
+    if (q1.getName() == "Mrs. Kasha Davis") {
         return "Team Mrs. " + q2.getName().split(" ")[0] + " Davis";
     }
-    else if (q2.getName() === "Mrs. Kasha Davis") {
+    else if (q2.getName() == "Mrs. Kasha Davis") {
         return "Team Mrs. " + q1.getName().split(" ")[0] + " Davis";
     }
     else {
-        for (var entry in teamNames) { // TODO why doesnt it recognize entry fields did I do the for in wrong
-            if (entry.queens[0] === q1.getName() && entry.queens[1] === q2.getName()) {
+        for (var entry of teamNames) {
+            if (entry.queenNames[0] == q1.getName() && entry.queenNames[1] == q2.getName()) {
                 return "Team " + entry.teamName;
             }
         }
