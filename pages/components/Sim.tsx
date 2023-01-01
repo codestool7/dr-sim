@@ -1,7 +1,7 @@
 import React from 'react';
 const { collection } = require('lodash');
 import { AppProps, AppState } from '../misc/types';
-import Header from './Header';
+import Header from './lilbabies/Header';
 import CastPicker from "./CastPicker";
 import { pickRandomlyFromArray, pickBallTheme, randomNumber, randomNumberWithMin } from "../misc/utils";
 //import { Scene, MiniChallenge, ActingChallenge, ComedyChallenge, MarketingChallenge, DanceChallenge, DesignChallenge, RunwayChallenge, ImprovChallenge, SnatchGame, Rusical, Ball, Rumix, GirlGroup, TalentShow } from "./classes";
@@ -21,7 +21,9 @@ export default class Sim extends React.Component<AppProps, AppState> {
 
     render() {
         return <div>
-            <Header />
+            <Header
+                text="Drag Race Simulator!"
+            />
             <CastPicker/>
         </div>;
     }

@@ -17,91 +17,21 @@ export default class ClassPicker extends React.Component<AppProps, AppState> {
         return <div className="mainPart" id="MainBlock">
             <p><big>This is your chance to simulate a drag race season with all your favorite contestants!</big></p>
             <div className="search-wrapper">
-                <big><label /*for="search"*/>Choose your contestants:</label></big>
+                <big><label /* for="search" */>Choose your contestants:</label></big>
                 <input type="search" id="search" className="searchInput" placeholder="Type a name.." data-search></input>
             </div>
             <div>
-                <button /*onClick={addRandomContestant}*/ id="randomK">Random</button>
-                <button /* onClick={addRandomCustomContestant} */ id="randomKC">Random Customs</button>
-                <button /* onClick={moreKweens} */ className="hide" id="moreK">Choose More Contestants</button>
+                <button /*onclick="addRandomContestant()"*/ id="randomK">Random</button>
+                <button /* onclick="addRandomCustomContestant()" */ id="randomKC">Random Customs</button>
+                <button /* onclick="moreKweens()" */ className="hide" id="moreK">Choose More Contestants</button>
             </div>
             <div className="drag-cards" data-drag-cards-container></div>
-            <template data-drag-template>
+            {/* <template data-drag-template>
                 <div className="card hide">
                     <div className="data-image" data-image></div>
                     <div className="header" data-header></div>
                 </div>
-            </template>
-            <hr></hr>
-            <big className="hide" id="castBig">Current Cast: <br></br></big>
-            <div id="chosenKweens" className="drag-cards"></div>
-            <div>
-            <p>Choose your premiere format: </p>
-            <select id="premiere-format">
-                <option>Normal premiere</option>
-                <option value="s6-premiere">Double Premiere</option>
-                <option value="s9-premiere">Normal Premiere (No Elimination)</option>
-                <option value="s12-premiere">Double Premiere (No Elimination)</option>
-                <option value="porkchop">Porkchop Premiere</option>
-                <option value="uk3-premiere">UK3 Premiere</option>
-                <option value="s14-premiere">Double Premiere (Talent Show)</option>
-            </select>
-        </div>
-
-        <div>
-            <p>Choose your returning format: </p>
-            <select id="returning">
-                <option>None</option>
-                <option value="choose">Choose who returns</option>
-                <option value="random">Random queen returns</option>
-                <option value="votes">Remaining queens vote</option>
-                <option value="conjoined-queens">Conjoined Queens Makeover</option>
-                <option value="queensofcomedy">Queens of Comedy</option>
-                <option value="kittygirlgroup">Kitty Girl Group</option>
-                <option value="smackdown">Lip-Sync Smackdown</option>
-                <option value="lalaparuza">LaLaPaRuZa</option>
-            </select>
-        </div>
-            
-        <div>
-            <p>Choose your season format: </p>
-            <select id="format">
-                <option value="regular">Regular Format</option>
-                <option value="thailand">Thailand's Format</option>
-                <option value="team">Teams Format</option>
-                <option value="all-stars">Lipsync For Your Legacy Format</option>
-                <option value="lipsync-assassin">Lipsync Assassin Format</option>
-                <option value="all-winners">All Winners Format</option>
-            </select>
-        </div>
-
-        <div>
-            <p>Choose your finale format: </p>
-            <select id="finale">
-                <option value="top5">Top 5</option>
-                <option value="top4">Top 4</option>
-                <option value="top3">Top 3</option>
-                <option value="teams">Teams Finale</option>
-                <option value="LFTC">Lip-Sync For The Crown</option>
-                <option value="LFTF">Lip Sync for the Finale</option>
-                <option value="jury">Jury Vote</option>
-                <option value="randomFinale">Random Finale</option>
-            </select>
-        </div>
-        <br></br>
-        <div><button /* onClick={startSimulation} */>Simulate now!</button></div>
-        <hr></hr>
-        <div>
-            <big>Options: <br></br></big>
-            <input type="checkbox" id="immunity"></input> Add immunity<br></br>
-            <input type="checkbox" id="disableDouble"></input> Disable double shantays and sashays <br></br>
-            <input type="checkbox" id="riggory"></input> Disable Challenge Riggory <br></br>
-            <input type="checkbox" id="riggoryLipsync"></input> Disable Lipsync Riggory 
-            <p>Chocolate Bar Twist: </p>
-            <input type="checkbox" id="chocolateBar"></input> Random
-            <input type="checkbox" id="chocolateBarChoosable"></input> Choosable
-        </div>
-        <hr></hr>
+            </template> */}
         </div>;
     }
 }
