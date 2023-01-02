@@ -1,5 +1,5 @@
 import React from 'react';
-const { collection } = require('lodash');
+import collection from 'lodash/collection';
 import { AppProps, AppState } from '../misc/types';
 import Header from './lilbabies/Header';
 import CastPicker from "./CastPicker";

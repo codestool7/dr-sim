@@ -975,10 +975,6 @@ export const multipleQueensRelation = [
     "shared personal memories to each other."
 ];
 
-export const seasons = [
-    
-];
-
 // I don't love that this matches to name strings instead of something more permanent but it'll do for now
 export const teamNames = [
     {queenNames: ["Latrice Royale", "Manila Luzon"], teamName: "Latrila"},

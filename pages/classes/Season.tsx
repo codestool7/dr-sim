@@ -1,4 +1,5 @@
-const { array, lang } = require('lodash');
+import array from 'lodash/array';
+import lang from 'lodash/lang';
 import Queen from "./Queen";
 
 export default class Season {
@@ -29,10 +30,10 @@ export default class Season {
             return lang.isEqual(q, queen);
         });
         if (!removed || removed.length < 1) {
-            throw new Error("Failed to remove queen " + queen.getName() + " from season " + this.getName());
+            throw new Error("failed to remove queen " + queen.getName() + " from season " + this.getName());
         }
         if (removed.length > 1) {
-            throw new Error("Somehow removed multiple queens named " + queen.getName() + " from season " + this.getName() + "?? how did you do this bro");
+            throw new Error("somehow removed multiple queens named " + queen.getName() + " from season " + this.getName() + "?? how did you do this bro");
         }
     }
 }

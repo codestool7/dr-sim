@@ -1,13 +1,16 @@
-const { array } = require('lodash');
+import array from 'lodash/array';
 import Queen from "../classes/Queen";
 import Season from "../classes/Season";
 
 export default class QueenUtil {
-    allQueens: Array<Queen> = [];
-    allSeasons: Array<Season> = [];
+    allQueens: Array<Queen>;
+    allSeasons: Array<Season>;
 
     constructor() {
+        this.allQueens = [];
+        this.allSeasons = [];
         this.initializeQueensAndSeasons();
+        //this.TEST();
     }
 
     getAllQueens() {
@@ -19,11 +22,38 @@ export default class QueenUtil {
     }
 
     addQueens(queens: Array<Queen>) {
-        this.allQueens = array.concat(this.allQueens, queens);
+        let beforeQueens = this.allQueens;
+        this.allQueens = array.concat(beforeQueens, queens);
+        if (this.allQueens.length != (beforeQueens.length + queens.length)) {
+            throw new Error("something went wrong when adding queens to master list")
+        }
     }
 
     addSeason(season: Season) {
+        let beforeLength = this.allSeasons.length;
         this.allSeasons.push(season);
+        if (this.allSeasons.length != beforeLength + 1) {
+            throw new Error("something went wrong when adding season to master list")
+        }
+    }
+
+    TEST() {
+        const akashia = new Queen("Akashia", 3, 2, 7, 3, 2, 7, 11, "Akashia");
+        const bebe = new Queen("BeBe Zahara Benet", 6, 7, 8, 12, 6, 10, 9, "BeBe");
+        const jade = new Queen("Jade Sotomayor", 3, 3, 8, 7, 3, 7, 7, "Jade");
+        const ninaf = new Queen("Nina Flowers", 7, 5, 5, 11, 6, 10, 6, "NinaFlowers");
+        const ongina = new Queen("Ongina", 9, 8, 7, 9, 10, 9, 8, "Ongina");
+        const rebecca = new Queen("Rebecca Glasscock", 3, 3, 6, 4, 2, 6, 5, "Rebecca");
+        const shannel = new Queen("Shannel", 5, 5, 5, 9, 4, 11, 7, "Shannel");
+        const tammie = new Queen("Tammie Brown", 6, 7, 5, 7, 6, 7, 6, "Tammie");
+        const victoria = new Queen("Victoria 'Porkchop' Parker", 3, 6, 4, 3, 6, 5, 4, "Victoria");
+        const us_1_queens = [akashia, bebe, jade, ninaf, ongina, rebecca, shannel, tammie, victoria];
+        const us_1 = new Season("us_1", us_1_queens);
+        this.addQueens(us_1_queens);
+        this.addSeason(us_1);
+        console.log(us_1);
+        us_1.removeQueen(akashia);
+        console.log(us_1);
     }
 
     // create all standard queens and predefined seasons

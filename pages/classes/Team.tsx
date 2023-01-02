@@ -1,4 +1,5 @@
-const { collection, math } = require('lodash');
+import collection from 'lodash/collection';
+import math from 'lodash/math';
 import { teamNames } from "../misc/constants";
 import Queen from "./Queen";
 

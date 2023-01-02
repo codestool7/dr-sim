@@ -6,6 +6,6 @@ type QueenRowProps = {
 
 export default function QueenRow(props: QueenRowProps) {
     return (
-        
+        null
     );
 }

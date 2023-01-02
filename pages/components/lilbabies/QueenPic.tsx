@@ -7,7 +7,7 @@ type QueenPicProps = {
 
 export default function QueenPic(props: QueenPicProps) {
     return (
-        <img src="" style=""></img>
+        <img src="" /*style=""*/></img>
     );
 }
 
