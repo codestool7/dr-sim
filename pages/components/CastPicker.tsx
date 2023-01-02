@@ -1,5 +1,8 @@
 import React from 'react';
 import { AppProps, AppState } from '../misc/types';
+import BigText from './lilbabies/BigText';
+import Button from './lilbabies/Button';
+import NormalText from './lilbabies/NormalText';
 
 export default class ClassPicker extends React.Component<AppProps, AppState> {
     constructor(props: AppProps) {
@@ -15,15 +18,15 @@ export default class ClassPicker extends React.Component<AppProps, AppState> {
 
     render() {
         return <div className="mainPart" id="MainBlock">
-            <p><big>This is your chance to simulate a drag race season with all your favorite contestants!</big></p>
+            <BigText text="This is your chance to simulate a drag race season with all your favorite contestants!" />
             <div className="search-wrapper">
-                <big><label /* for="search" */>Choose your contestants:</label></big>
+                <BigText text="Choose your contestants:" noBreak/>
                 <input type="search" id="search" className="searchInput" placeholder="Type a name.." data-search></input>
             </div>
             <div>
-                <button /*onclick="addRandomContestant()"*/ id="randomK">Random</button>
-                <button /* onclick="addRandomCustomContestant()" */ id="randomKC">Random Customs</button>
-                <button /* onclick="moreKweens()" */ className="hide" id="moreK">Choose More Contestants</button>
+                <Button text="Random" onClick={addRandomContestant}/>
+                <Button text="Random Customs" onClick={addRandomCustomContestant}/>
+                {/*<Button text="Choose More Contestants" onClick={moreKweens}/>*/}
             </div>
             <div className="drag-cards" data-drag-cards-container></div>
             {/* <template data-drag-template>
@@ -32,12 +35,80 @@ export default class ClassPicker extends React.Component<AppProps, AppState> {
                     <div className="header" data-header></div>
                 </div>
             </template> */}
+            <hr />
+            {/*<BigText text="Current Cast:" noBreak/>*/}
+            <div id="chosenKweens" className="drag-cards"></div>
+            {/*<div>
+                <NormalText text="Choose your premiere format:"/>
+                <select id="premiere-format">
+                    <option>Normal premiere</option>
+                    <option value="s6-premiere">Double Premiere</option>
+                    <option value="s9-premiere">Normal Premiere (No Elimination)</option>
+                    <option value="s12-premiere">Double Premiere (No Elimination)</option>
+                    <option value="porkchop">Porkchop Premiere</option>
+                    <option value="uk3-premiere">UK3 Premiere</option>
+                    <option value="s14-premiere">Double Premiere (Talent Show)</option>
+                </select>
+            </div>
+            <div>
+                <NormalText text="Choose your season format:"/>
+                <select id="format">
+                    <option value="regular">Regular Format</option>
+                    <option value="thailand">Thailand's Format</option>
+                    <option value="team">Teams Format</option>
+                    <option value="all-stars">Lipsync For Your Legacy Format</option>
+                    <option value="lipsync-assassin">Lipsync Assassin Format</option>
+                    <option value="all-winners">All Winners Format</option>
+                </select>
+            </div>
+            <div>
+                <NormalText text="Choose your returning format:"/>
+                <select id="returning">
+                    <option>None</option>
+                    <option value="choose">Choose who returns</option>
+                    <option value="random">Random queen returns</option>
+                    <option value="votes">Remaining queens vote</option>
+                    <option value="conjoined-queens">Conjoined Queens Makeover</option>
+                    <option value="queensofcomedy">Queens of Comedy</option>
+                    <option value="kittygirlgroup">Kitty Girl Group</option>
+                    <option value="smackdown">Lip-Sync Smackdown</option>
+                    <option value="lalaparuza">LaLaPaRuZa</option>
+                </select>
+            </div>
+            <div>
+                <NormalText text="Choose your finale format:"/>
+                <select id="finale">
+                    <option value="top5">Top 5</option>
+                    <option value="top4">Top 4</option>
+                    <option value="top3">Top 3</option>
+                    <option value="teams">Teams Finale</option>
+                    <option value="LFTC">Lip-Sync For The Crown</option>
+                    <option value="LFTF">Lip Sync for the Finale</option>
+                    <option value="jury">Jury Vote</option>
+                    <option value="randomFinale">Random Finale</option>
+                </select>
+            </div>
+            <br />
+            <div>
+                <Button text="Simulate now!" onClick={startSimulation}/>
+            </div>
+            <hr />
+            <div>
+                <BigText text="Options:" noBreak/> <br />
+                <input type="checkbox" id="immunity"></input> Add immunity<br />
+                <input type="checkbox" id="disableDouble"></input> Disable double shantays and sashays<br />
+                <input type="checkbox" id="riggory"></input> Disable Challenge Riggory<br />
+                <input type="checkbox" id="riggoryLipsync"></input> Disable Lipsync Riggory
+                <NormalText text="Chocolate Bar Twist:"/>
+                <input type="checkbox" id="chocolateBar"></input> Random
+                <input type="checkbox" id="chocolateBarChoosable"></input> Choosable
+            </div>*/}
         </div>;
     }
 }
-/*
+
 function addRandomContestant() {
-    let button = document.getElementById("randomK");
+    /* let button = document.getElementById("randomK");
     let button1 = document.getElementById("moreK");
     let button2 = document.getElementById("randomKC");
     let noCustom = allQueens.filter(queen => { return queen.customqueen == false });
@@ -61,11 +132,11 @@ function addRandomContestant() {
     if (currentCast.length != 0) {
         big.classList.toggle("hide", false);
         big.innerHTML = "Current Cast: " + currentCast.length;
-    }
+    } */
 }
 
 function addRandomCustomContestant() {
-    let button = document.getElementById("randomKC");
+    /* let button = document.getElementById("randomKC");
     let button1 = document.getElementById("moreK");
     let button2 = document.getElementById("randomK");
     let noCustom = allQueens.filter(queen => { return queen.customqueen == true });
@@ -89,11 +160,11 @@ function addRandomCustomContestant() {
     if (currentCast.length != 0) {
         big.classList.toggle("hide", false);
         big.innerHTML = "Current Cast: " + currentCast.length;
-    }
+    } */
 }
 
 function moreKweens() {
-    let button = document.getElementById("randomK");
+    /* let button = document.getElementById("randomK");
     let button1 = document.getElementById("moreK");
     let button2 = document.getElementById("randomKC");
     if (currentCast.length < 20) {
@@ -105,9 +176,9 @@ function moreKweens() {
         searchInput.setAttribute("placeholder", "Type a name..");
     } else {
         window.alert("Remove one contestant of your current cast..");
-    }
+    } */
 }
-
+/*
 const queenCardTemplate = document.querySelector("[data-drag-template]");
 const queenCardContainer = document.querySelector("[data-drag-cards-container]");
 const searchInput = document.querySelector("[data-search]");

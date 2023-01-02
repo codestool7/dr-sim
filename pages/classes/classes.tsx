@@ -1,100 +1,6 @@
 import { pickRandomlyFromArray, pickBallTheme, randomNumber, randomNumberWithMin } from "../misc/utils";
 import {queensReads, whoWhyCompetition, whoWhyRelation, lipsyncsEventsBad, lipsyncsEventsGood, miniChallengeDescriptions1, miniChallengeDescriptions2, actingChallengeDescriptions1, actingChallengeDescriptions2, comedyChallengeDescriptions1, comedyChallengeDescriptions2, marketingDescriptions1, marketingDescriptions2, danceDescriptions, designDescriptions, makeoverOptions, runwayDescriptions, improvDescriptions, rusicalDescriptions, themedBallDescriptions, ballDescriptions1, ballDescriptions2, ballDescriptions3, rumixDescriptions, girlGroupDescriptions, talentOptions, reasoningQueens, twoQueensRelation1, twoQueensRelation2, twoQueensRelation3, twoQueensRelation3_2, twoQueensRelation4, twoQueensRelation4_2, twoQueensRelation5, threeQueensRelation1, threeQueensRelation2, threeQueensRelation3, threeQueensRelation4, fourQueensRelation1, fourQueensRelation2, fourQueensRelation3, fourQueensRelation4, multipleQueensRelation} from "../misc/constants";
 /* 
-// TODO all of this scene logic is just manipulating dom, needs to be in body I think
-export class Scene {
-    constructor() {
-        this._MainBlock = document.querySelector("div#MainBlock");
-    }
-    clean() {
-        this._MainBlock.innerHTML = '';
-        this.createRightClick();
-        let scrollup = document.querySelector(".toTop");
-        window.addEventListener("scroll", e => {
-            if (window.scrollY > 100) {
-                scrollup.classList.add("active");
-            } else {
-                scrollup.classList.remove("active");
-            }
-        });
-    }
-    createRightClick() {
-        if (document.getElementById("inputRightKey") == undefined) {
-            let text = document.createElement("input");
-            text.setAttribute("class", "textRightClick");
-            text.setAttribute("id", "inputRightKey");
-            text.setAttribute("type", "text");
-            text.setAttribute("readonly", "readonly");
-            this._MainBlock.parentElement.appendChild(text);
-        }
-    }
-    createHeader(text) {
-        let title = document.getElementById("MainTitle");
-        title.innerHTML = text;
-    }
-    createBigText(text) {
-        let big = document.createElement("big");
-        let p = document.createElement("p");
-        big.innerHTML = text;
-        p.appendChild(big);
-        this._MainBlock.appendChild(p);
-    }
-    createParagraph(text, id = '') {
-        let p = document.createElement("p");
-        p.innerHTML = text;
-        p.setAttribute("id", id);
-        this._MainBlock.appendChild(p);
-    }
-    createBold(text, id = '', id1 = '') {
-        let p = document.createElement("p");
-        let bold = document.createElement("b");
-        bold.innerHTML = text;
-        bold.setAttribute("id", id);
-        p.setAttribute("id", id1);
-        p.appendChild(bold);
-        this._MainBlock.appendChild(p);
-    }
-    createButton(text, method, id = '') {
-        let button = document.createElement("button");
-        button.innerHTML = text;
-        button.setAttribute("onclick", method);
-        button.setAttribute("id", id);
-        this._MainBlock.appendChild(button);
-        if (text == "Proceed" || text == "Show result") {
-            let textField = document.getElementById("inputRightKey");
-            textField.focus();
-            textField.addEventListener("keydown", (e) => {
-                let key = e.key;
-                if (key === "ArrowRight" && document.querySelector("button[onclick='" + method + "']") == button) {
-                    e.target.remove();
-                    button.click();
-                    this.goToTop();
-                }
-            }, {once: true});
-            document.addEventListener("click", e => {
-                if (e.target.matches('div#MainBlock') == false && e.target.matches('select') == false) {
-                    textField.focus();
-                }
-            });
-        }
-    }
-    createHorizontalLine() {
-        let hr = document.createElement("hr");
-        this._MainBlock.appendChild(hr);
-    }
-    createImage(source, color = "black") {
-        let image = document.createElement("img");
-        image.src = source;
-        image.setAttribute("style", `border-color: ${color}; width: 105px; height: 105px;`);
-        this._MainBlock.appendChild(image);
-    }
-    goToTop() {
-        this._MainBlock.scrollIntoView({ 
-            behavior: 'smooth'
-          });
-    }
-}
-
 export class MiniChallenge {
     generateDescription() {
         let description = document.querySelector("b#Description");
@@ -263,7 +169,7 @@ export class ImprovChallenge {
     }
 }
 
-export class SnatchGame {
+export class SnatchGameChallenge {
     generateDescription() {
         let description = document.querySelector("b#Description");
         description.innerHTML = "Today's challenge is... SNATCH GAME!! The queens will do funny celebrity impersonations!";
@@ -280,7 +186,7 @@ export class SnatchGame {
     }
 }
 
-export class Rusical {
+export class RusicalChallenge {
     generateDescription() {
         let description = document.querySelector("b#Description");
         description.innerHTML = "Today's challenge is... THE RUSICAL!! The queens were tasked to take part in " + pickRandomlyFromArray(rusicalDescriptions);
@@ -292,7 +198,7 @@ export class Rusical {
     }
 }
 
-export class Ball {
+export class BallChallenge {
     generateDescription() {
         let description = document.querySelector("b#Description");
         if (randomNumber(100) >= 35) {
@@ -309,7 +215,7 @@ export class Ball {
     }
 }
 
-export class Rumix {
+export class RumixChallenge {
     generateDescription() {
         let description = document.querySelector("b#Description");
         description.innerHTML = "Today's challenge is... the rumix! The queens will make a verse and a choreography for " + pickRandomlyFromArray(rumixDescriptions);
@@ -321,7 +227,7 @@ export class Rumix {
     }
 }
 
-export class GirlGroup {
+export class GirlGroupChallenge {
     generateDescription() {
         let description = document.querySelector("b#Description");
         description.innerHTML = "The remaining queens will record vocals and perform in a Girl Group number for the original song " + pickRandomlyFromArray(girlGroupDescriptions) + ".";
@@ -333,7 +239,7 @@ export class GirlGroup {
     }
 }
 
-export class TalentShow {
+export class TalentShowChallenge {
     generateDescription() {
         let description = document.querySelector("b#Description");
         description.innerHTML = "In this first challenge, the queens will prove themselves in a talent show, where they bring all they've got!";
