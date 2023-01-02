@@ -178,7 +178,7 @@ function moreKweens() {
         window.alert("Remove one contestant of your current cast..");
     } */
 }
-
+/*
 const queenCardTemplate = document.querySelector("[data-drag-template]");
 const queenCardContainer = document.querySelector("[data-drag-cards-container]");
 const searchInput = document.querySelector("[data-search]");
@@ -299,3 +299,4 @@ chosenKweensContainer.addEventListener("click",function(e) {
         }
     }
 })
+*/

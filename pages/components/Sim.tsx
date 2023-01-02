@@ -6,12 +6,15 @@ import CastPicker from "./CastPicker";
 import { pickRandomlyFromArray, pickBallTheme, randomNumber, randomNumberWithMin } from "../misc/utils";
 //import { Scene, MiniChallenge, ActingChallenge, ComedyChallenge, MarketingChallenge, DanceChallenge, DesignChallenge, RunwayChallenge, ImprovChallenge, SnatchGame, Rusical, Ball, Rumix, GirlGroup, TalentShow } from "./classes";
 import {queensReads, whoWhyCompetition, whoWhyRelation, lipsyncsEventsBad, lipsyncsEventsGood, miniChallengeDescriptions1, miniChallengeDescriptions2, actingChallengeDescriptions1, actingChallengeDescriptions2, comedyChallengeDescriptions1, comedyChallengeDescriptions2, marketingDescriptions1, marketingDescriptions2, danceDescriptions, designDescriptions, makeoverOptions, runwayDescriptions, improvDescriptions, rusicalDescriptions, themedBallDescriptions, ballDescriptions1, ballDescriptions2, ballDescriptions3, rumixDescriptions, girlGroupDescriptions, talentOptions, reasoningQueens, twoQueensRelation1, twoQueensRelation2, twoQueensRelation3, twoQueensRelation3_2, twoQueensRelation4, twoQueensRelation4_2, twoQueensRelation5, threeQueensRelation1, threeQueensRelation2, threeQueensRelation3, threeQueensRelation4, fourQueensRelation1, fourQueensRelation2, fourQueensRelation3, fourQueensRelation4, multipleQueensRelation} from "../misc/constants";
+import QueenUtil from '../utils/QueenUtil';
 
 export default class Sim extends React.Component<AppProps, AppState> {
+    queenUtil: QueenUtil;
+
     constructor(props: AppProps) {
         super(props);
         this.state = {};
-        this.initializeQueenList();
+        this.queenUtil = new QueenUtil();
     }
     
     componentDidMount() {
@@ -27,11 +30,6 @@ export default class Sim extends React.Component<AppProps, AppState> {
             />
             <CastPicker/>
         </div>;
-    }
-
-    // initialize all queens and predef seasons
-    initializeData() {
-        
     }
 }
 
