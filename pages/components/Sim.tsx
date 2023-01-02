@@ -11,6 +11,7 @@ export default class Sim extends React.Component<AppProps, AppState> {
     constructor(props: AppProps) {
         super(props);
         this.state = {};
+        this.initializeQueenList();
     }
     
     componentDidMount() {
@@ -27,7 +28,13 @@ export default class Sim extends React.Component<AppProps, AppState> {
             <CastPicker/>
         </div>;
     }
+
+    // initialize all queens and predef seasons
+    initializeData() {
+        
+    }
 }
+
 /* 
 //mini-challenge stuff:
 

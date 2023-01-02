@@ -178,13 +178,14 @@ function moreKweens() {
         window.alert("Remove one contestant of your current cast..");
     } */
 }
-/*
+
 const queenCardTemplate = document.querySelector("[data-drag-template]");
 const queenCardContainer = document.querySelector("[data-drag-cards-container]");
 const searchInput = document.querySelector("[data-search]");
 let chosenKweensContainer = document.getElementById("chosenKweens");
 let showingQueens = [];
 
+// updates queen options when you type a character
 searchInput.addEventListener("input", e => {
     const value = e.target.value.toLowerCase();
     showingQueens.forEach(queen => {
@@ -197,6 +198,7 @@ searchInput.addEventListener("input", e => {
     });
 });
 
+// 
 showingQueens = allQueens.map(queen => {
     const card = queenCardTemplate.content.cloneNode(true).children[0];
     const cardImage = card.querySelector("[data-image]");
@@ -214,6 +216,7 @@ showingQueens = allQueens.map(queen => {
     return { name: queen._name, element: card}
 });
 
+// when you select a queen to add
 queenCardContainer.addEventListener("click", e => {
     if (e.target && (e.target.matches("div.card") || e.target.parentNode.matches("div.card") || e.target.matches("img") ) ) {
         let id;
@@ -253,6 +256,7 @@ queenCardContainer.addEventListener("click", e => {
     }
 })
 
+// update showing queens list with array of selected queens
 function updateCast() {
     chosenKweensContainer.innerHTML = "";
     currentCast.forEach(queen => {
@@ -260,6 +264,7 @@ function updateCast() {
     });
 }
 
+// shows specific queen in current cast list
 function addKween(queen) {
     return `<div  class="card">
         <div class="data-image">
@@ -270,6 +275,7 @@ function addKween(queen) {
         </div>`
 }
 
+// reset search box after selecting queen to add
 function resetSearch() {
     searchInput.value = "";
     showingQueens.forEach(queen => {
@@ -277,6 +283,7 @@ function resetSearch() {
     });
 }
 
+// when you click the x to remove a queen
 chosenKweensContainer.addEventListener("click",function(e) {
     if (e.target && e.target.matches("button#remove")) {
         let id = e.target.parentNode.id;
@@ -292,4 +299,3 @@ chosenKweensContainer.addEventListener("click",function(e) {
         }
     }
 })
-*/

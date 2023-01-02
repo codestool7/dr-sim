@@ -30,6 +30,14 @@ export default class Team extends Queen {
         this.queens = sortedQueens;
         this.teamName = name;
     }
+
+    getQueens() {
+        return this.queens;
+    }
+
+    getTeamName() {
+        return this.teamName;
+    }
 }
 
 function getPredeterminedTeamName(q1: Queen, q2: Queen): string {

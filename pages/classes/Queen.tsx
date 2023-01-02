@@ -1,7 +1,7 @@
 import { randomNumberWithMin } from "../misc/utils";
 
 export default class Queen {
-    trackRecord: string[] = [];
+    /*trackRecord: string[] = [];
     friends = [];
     enemies = [];
     sisters = [];
@@ -26,7 +26,8 @@ export default class Queen {
     customqueen = false;
     immune = false;
     chocolate = false;
-    maxiT = false;
+    maxiT = false;*/
+    
     name: string;
     actingStat: number;
     comedyStat: number;
@@ -36,6 +37,7 @@ export default class Queen {
     runwayStat: number;
     lipsyncStat: number;
     image: string;
+    isCustom: boolean;
 
     constructor(name: string, acting: number, comedy: number, dance: number, design: number, improv: number, runway: number, lipsync: number, image = "noimage", custom = false) {
         this.name = name;
@@ -46,8 +48,9 @@ export default class Queen {
         this.improvStat = improv;
         this.runwayStat = runway;
         this.lipsyncStat = lipsync;
+        this.isCustom = custom;
         if (image == "noimage") {
-            this.image = "image/queens/noimage.jpg";
+            this.image = "image/noimage.jpg";
         }
         else if (custom == true) {
             this.image = image;
@@ -97,7 +100,7 @@ export default class Queen {
     getLipSyncStat() {
         return this.lipsyncStat;
     }
-
+    /*
     getFinaleScore() {
         this.finaleScore = this.favoritism - this.unfavoritism;
     }
@@ -169,5 +172,5 @@ export default class Queen {
     
     editTrackRecord(added: string) {
         this.trackRecord[this.trackRecord.length - 1] += added;
-    }
+    }*/
 }
