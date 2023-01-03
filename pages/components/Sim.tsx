@@ -33,7 +33,9 @@ export default class Sim extends React.Component<AppProps, AppState> {
             <Header
                 text="Drag Race Simulator!"
             />
-            <CastPicker/>
+            <CastPicker
+                queens={this.allQueens}
+            />
         </div>;
     }
 }

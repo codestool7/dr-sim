@@ -1,5 +1,14 @@
 @charset "UTF-8";
 
+/* codester's added styles: */
+
+/* just took the inline shit applied to every queen picture and moved it here */
+.queenImage {
+    width: 105px;
+    height: 105px;
+}
+
+/* existing styles: */
 
 html {
     height: 100%;

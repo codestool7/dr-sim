@@ -56,7 +56,7 @@ export default class Queen {
             this.image = image;
         }
         else {
-            this.image = "image/queens/" + image + ".webp";
+            this.image = "/queens/" + image + ".webp";
         }
     }
     

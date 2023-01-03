@@ -1,10 +1,10 @@
 import Queen from "../../classes/Queen";
 
-type QueenRowProps = {
+type QueenPicRowProps = {
     queens: Array<Queen>
 }
 
-export default function QueenRow(props: QueenRowProps) {
+export default function QueenPicRow(props: QueenPicRowProps) {
     return (
         null
     );

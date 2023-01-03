@@ -1,12 +1,24 @@
 import React from 'react';
-import { AppProps, AppState } from '../misc/types';
+import Queen from '../classes/Queen';
+import { AppState } from '../misc/types';
 import BigText from './lilbabies/BigText';
 import Button from './lilbabies/Button';
 import NormalText from './lilbabies/NormalText';
+import QueenCard from './lilbabies/QueenCard';
 
-export default class ClassPicker extends React.Component<AppProps, AppState> {
-    constructor(props: AppProps) {
+type CastPickerProps = {
+    queens: Array<Queen>
+}
+
+export default class ClassPicker extends React.Component<CastPickerProps, AppState> {
+    allQueens: Array<Queen> = [];
+    selectedQueens: Array<Queen> = [];
+    showingQueens: Array<Queen> = [];
+
+    constructor(props: CastPickerProps) {
         super(props);
+        this.allQueens = props.queens;
+        this.showingQueens.push(this.allQueens[0]); // test showing one
         this.state = {};
     }
     
@@ -24,17 +36,15 @@ export default class ClassPicker extends React.Component<AppProps, AppState> {
                 <input type="search" id="search" className="searchInput" placeholder="Type a name.." data-search></input>
             </div>
             <div>
-                <Button text="Random" onClick={addRandomContestant}/>
+                <Button text="Random" onClick={addRandomStandardContestant}/>
                 <Button text="Random Customs" onClick={addRandomCustomContestant}/>
                 <Button text="Choose More Contestants" onClick={moreKweens} hide/>
             </div>
-            <div className="drag-cards" data-drag-cards-container></div>
-            {/* <template data-drag-template>
-                <div className="card hide">
-                    <div className="data-image" data-image></div>
-                    <div className="header" data-header></div>
-                </div>
-            </template> */}
+            <div className="drag-cards" data-drag-cards-container>
+                {this.showingQueens.map(queen => (
+                    <QueenCard queen={queen}/>
+                ))}
+            </div>
             <hr />
             {/*<BigText text="Current Cast:" noBreak/>*/}
             <div id="chosenKweens" className="drag-cards"></div>
@@ -107,8 +117,29 @@ export default class ClassPicker extends React.Component<AppProps, AppState> {
     }
 }
 
+function addRandomStandardContestant() {
+
+}
+
+function addRandomCustomContestant() {
+
+}
+
+function moreKweens() {
+
+}
+
+/*
+<template data-drag-template>
+    <div className="card">
+        <div className="data-image" data-image></div>
+        <div className="header" data-header></div>
+    </div>
+</template>
+
+// first button onclick
 function addRandomContestant() {
-    /* let button = document.getElementById("randomK");
+    let button = document.getElementById("randomK");
     let button1 = document.getElementById("moreK");
     let button2 = document.getElementById("randomKC");
     let noCustom = allQueens.filter(queen => { return queen.customqueen == false });
@@ -132,11 +163,12 @@ function addRandomContestant() {
     if (currentCast.length != 0) {
         big.classList.toggle("hide", false);
         big.innerHTML = "Current Cast: " + currentCast.length;
-    } */
+    }
 }
 
+// second button onclick
 function addRandomCustomContestant() {
-    /* let button = document.getElementById("randomKC");
+    let button = document.getElementById("randomKC");
     let button1 = document.getElementById("moreK");
     let button2 = document.getElementById("randomK");
     let noCustom = allQueens.filter(queen => { return queen.customqueen == true });
@@ -160,11 +192,12 @@ function addRandomCustomContestant() {
     if (currentCast.length != 0) {
         big.classList.toggle("hide", false);
         big.innerHTML = "Current Cast: " + currentCast.length;
-    } */
+    }
 }
 
+// third button onclick
 function moreKweens() {
-    /* let button = document.getElementById("randomK");
+    let button = document.getElementById("randomK");
     let button1 = document.getElementById("moreK");
     let button2 = document.getElementById("randomKC");
     if (currentCast.length < 20) {
@@ -176,16 +209,16 @@ function moreKweens() {
         searchInput.setAttribute("placeholder", "Type a name..");
     } else {
         window.alert("Remove one contestant of your current cast..");
-    } */
+    }
 }
-/*
+
 const queenCardTemplate = document.querySelector("[data-drag-template]");
 const queenCardContainer = document.querySelector("[data-drag-cards-container]");
 const searchInput = document.querySelector("[data-search]");
 let chosenKweensContainer = document.getElementById("chosenKweens");
 let showingQueens = [];
 
-// updates queen options when you type a character
+// event listener to update queen options when you type a character
 searchInput.addEventListener("input", e => {
     const value = e.target.value.toLowerCase();
     showingQueens.forEach(queen => {
@@ -198,7 +231,7 @@ searchInput.addEventListener("input", e => {
     });
 });
 
-// 
+// maps allQueens list to new showingQueens list that includes the dom element for each queen
 showingQueens = allQueens.map(queen => {
     const card = queenCardTemplate.content.cloneNode(true).children[0];
     const cardImage = card.querySelector("[data-image]");
