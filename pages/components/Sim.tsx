@@ -3,18 +3,23 @@ import collection from 'lodash/collection';
 import { AppProps, AppState } from '../misc/types';
 import Header from './lilbabies/Header';
 import CastPicker from "./CastPicker";
-import { pickRandomlyFromArray, pickBallTheme, randomNumber, randomNumberWithMin } from "../misc/utils";
+import { pickRandomlyFromArray, pickBallTheme, randomNumber, randomNumberWithMin } from "../utils/utils";
 //import { Scene, MiniChallenge, ActingChallenge, ComedyChallenge, MarketingChallenge, DanceChallenge, DesignChallenge, RunwayChallenge, ImprovChallenge, SnatchGame, Rusical, Ball, Rumix, GirlGroup, TalentShow } from "./classes";
 import {queensReads, whoWhyCompetition, whoWhyRelation, lipsyncsEventsBad, lipsyncsEventsGood, miniChallengeDescriptions1, miniChallengeDescriptions2, actingChallengeDescriptions1, actingChallengeDescriptions2, comedyChallengeDescriptions1, comedyChallengeDescriptions2, marketingDescriptions1, marketingDescriptions2, danceDescriptions, designDescriptions, makeoverOptions, runwayDescriptions, improvDescriptions, rusicalDescriptions, themedBallDescriptions, ballDescriptions1, ballDescriptions2, ballDescriptions3, rumixDescriptions, girlGroupDescriptions, talentOptions, reasoningQueens, twoQueensRelation1, twoQueensRelation2, twoQueensRelation3, twoQueensRelation3_2, twoQueensRelation4, twoQueensRelation4_2, twoQueensRelation5, threeQueensRelation1, threeQueensRelation2, threeQueensRelation3, threeQueensRelation4, fourQueensRelation1, fourQueensRelation2, fourQueensRelation3, fourQueensRelation4, multipleQueensRelation} from "../misc/constants";
-import QueenUtil from '../utils/QueenUtil';
+import Queen from '../classes/Queen';
+import Season from '../classes/Season';
+import { fetchQueensAndSeasons } from '../utils/queenUtils';
 
 export default class Sim extends React.Component<AppProps, AppState> {
-    queenUtil: QueenUtil;
+    allQueens: Array<Queen> = [];
+    allSeasons: Array<Season> = [];
 
     constructor(props: AppProps) {
         super(props);
+        let data = fetchQueensAndSeasons();
+        this.allQueens = data.queens;
+        this.allSeasons = data.seasons;
         this.state = {};
-        this.queenUtil = new QueenUtil();
     }
     
     componentDidMount() {

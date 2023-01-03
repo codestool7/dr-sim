@@ -1,5 +1,3 @@
-// gonna put helper functions in here
-
 type BallTheme = {
     name: string,
     themes: string

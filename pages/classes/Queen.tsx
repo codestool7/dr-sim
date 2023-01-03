@@ -1,4 +1,4 @@
-import { randomNumberWithMin } from "../misc/utils";
+import { randomNumberWithMin } from "../utils/utils";
 
 export default class Queen {
     /*trackRecord: string[] = [];
