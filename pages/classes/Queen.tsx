@@ -37,7 +37,7 @@ export default class Queen {
     runwayStat: number;
     lipsyncStat: number;
     image: string;
-    isCustom: boolean;
+    custom: boolean;
 
     constructor(name: string, acting: number, comedy: number, dance: number, design: number, improv: number, runway: number, lipsync: number, image = "noimage", custom = false) {
         this.name = name;
@@ -48,7 +48,7 @@ export default class Queen {
         this.improvStat = improv;
         this.runwayStat = runway;
         this.lipsyncStat = lipsync;
-        this.isCustom = custom;
+        this.custom = custom;
         if (image == "noimage") {
             this.image = "image/noimage.jpg";
         }
@@ -67,10 +67,6 @@ export default class Queen {
 
     getName() {
         return this.name;
-    }
-
-    getImage() {
-        return this.image;
     }
 
     getActingStat() {
@@ -99,6 +95,14 @@ export default class Queen {
 
     getLipSyncStat() {
         return this.lipsyncStat;
+    }
+
+    getImage() {
+        return this.image;
+    }
+
+    isCustom() {
+        return this.custom;
     }
     /*
     getFinaleScore() {

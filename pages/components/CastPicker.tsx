@@ -26,7 +26,7 @@ export default class ClassPicker extends React.Component<AppProps, AppState> {
             <div>
                 <Button text="Random" onClick={addRandomContestant}/>
                 <Button text="Random Customs" onClick={addRandomCustomContestant}/>
-                {/*<Button text="Choose More Contestants" onClick={moreKweens}/>*/}
+                <Button text="Choose More Contestants" onClick={moreKweens} hide/>
             </div>
             <div className="drag-cards" data-drag-cards-container></div>
             {/* <template data-drag-template>

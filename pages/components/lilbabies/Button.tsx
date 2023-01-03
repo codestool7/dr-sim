@@ -1,10 +1,13 @@
 type ButtonProps = {
     text: string,
-    onClick: React.MouseEventHandler<HTMLButtonElement>
+    onClick: React.MouseEventHandler<HTMLButtonElement>,
+    hide?: boolean
 }
 
 export default function Button(props: ButtonProps) {
-    return (
-        <button onClick={props.onClick}>{props.text}</button>
-    );
+    if (props.hide) {
+        return null;
+    } else {
+        return <button onClick={props.onClick}>{props.text}</button>;
+    }
 }
