@@ -1,6 +1,5 @@
 import React from 'react';
 import Queen from '../classes/Queen';
-import { AppState } from '../misc/types';
 import BigText from './lilbabies/BigText';
 import Button from './lilbabies/Button';
 import NormalText from './lilbabies/NormalText';
@@ -19,7 +18,6 @@ export default class ClassPicker extends React.Component<CastPickerProps, CastPi
     constructor(props: CastPickerProps) {
         super(props);
         this.state = {selectedQueens: [], showingQueens: []};
-        //this.showingQueens.push(props.queens[0]); // test showing one
     }
     
     componentDidMount() {

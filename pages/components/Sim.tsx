@@ -1,6 +1,6 @@
 import React from 'react';
 import collection from 'lodash/collection';
-import { AppProps, AppState } from '../misc/types';
+import { AppProps } from '../misc/types';
 import Header from './lilbabies/Header';
 import CastPicker from "./CastPicker";
 import { pickRandomlyFromArray, pickBallTheme, randomNumber, randomNumberWithMin } from "../utils/utils";
@@ -10,20 +10,23 @@ import Queen from '../classes/Queen';
 import Season from '../classes/Season';
 import { fetchQueensAndSeasons } from '../utils/queenUtils';
 
-export default class Sim extends React.Component<AppProps, AppState> {
-    allQueens: Array<Queen>;
-    allSeasons: Array<Season>;
+type SimState = {
+    allQueens: Array<Queen>,
+    allSeasons: Array<Season>
+}
 
+export default class Sim extends React.Component<{}, SimState> {
     constructor(props: AppProps) {
         super(props);
-        this.state = {};
-        let data = fetchQueensAndSeasons();
-        this.allQueens = data.queens;
-        this.allSeasons = data.seasons;
+        this.state = {allQueens: [], allSeasons: []};
     }
     
     componentDidMount() {
-        
+        let data = fetchQueensAndSeasons();
+        this.setState({
+            allQueens: data.queens,
+            allSeasons: data.seasons
+        });
     }
     
     componentWillUnmount() {
@@ -35,7 +38,7 @@ export default class Sim extends React.Component<AppProps, AppState> {
                 text="Drag Race Simulator!"
             />
             <CastPicker
-                queens={this.allQueens}
+                queens={this.state.allQueens}
             />
         </div>;
     }
