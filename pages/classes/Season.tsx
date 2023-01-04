@@ -1,5 +1,3 @@
-import array from 'lodash/array';
-import lang from 'lodash/lang';
 import Queen from "./Queen";
 
 export default class Season {
@@ -20,24 +18,4 @@ export default class Season {
     getQueens() {
         return this.queens;
     }
-    
-    /*
-    don't think we're gonna need these:
-
-    addQueen(queen: Queen) {
-        this.queens.push(queen);
-    }
-
-    removeQueen(queen: Queen) {
-        let removed = array.remove(this.queens, function(q: Queen) {
-            return lang.isEqual(q, queen);
-        });
-        if (!removed || removed.length < 1) {
-            throw new Error("failed to remove queen " + queen.getName() + " from season " + this.getName());
-        }
-        if (removed.length > 1) {
-            throw new Error("somehow removed multiple queens named " + queen.getName() + " from season " + this.getName() + "?? how did you do this bro");
-        }
-    }
-    */
 }

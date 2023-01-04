@@ -1,26 +1,30 @@
 import React from 'react';
-import array from 'lodash/array';
-import lang from 'lodash/lang';
 import Queen from '../classes/Queen';
 import BigText from './lilbabies/BigText';
 import Button from './lilbabies/Button';
 import NormalText from './lilbabies/NormalText';
 import QueenCard from './lilbabies/QueenCard';
+import { addQueenToArray, addQueenToArrayAndSort, removeQueenFromArray } from '../utils/utils';
 
 type CastPickerProps = {
     queens: Array<Queen>
 }
 
 type CastPickerState = {
+    // queens you can search for
+    searchableQueens: Array<Queen>,
+    // queens showing under search box that you can select
     showingQueens: Array<Queen>,
+    // queens currently selected and in cast list
     selectedQueens: Array<Queen>,
+    // text value of search box
     searchValue: string
 }
 
 export default class ClassPicker extends React.Component<CastPickerProps, CastPickerState> {
     constructor(props: CastPickerProps) {
         super(props);
-        this.state = {showingQueens: [], selectedQueens: [], searchValue: ""};
+        this.state = {searchableQueens: props.queens, showingQueens: [], selectedQueens: [], searchValue: ""};
     }
 
     addRandomStandardContestant() {
@@ -32,7 +36,6 @@ export default class ClassPicker extends React.Component<CastPickerProps, CastPi
     moreKweens() {
     }
     
-    // TODO don't show queens that are already selected
     updateShowingQueens = (event) => {
         const searchString = event.target.value.toLocaleLowerCase();
         if (searchString.length == 0) {
@@ -41,7 +44,7 @@ export default class ClassPicker extends React.Component<CastPickerProps, CastPi
                 searchValue: ""
             });
         } else {
-            let nowShowing = this.props.queens.filter(queen => {
+            let nowShowing = this.state.searchableQueens.filter(queen => {
                 return queen.getName().toLocaleLowerCase().includes(searchString);
             });
             this.setState({
@@ -52,28 +55,22 @@ export default class ClassPicker extends React.Component<CastPickerProps, CastPi
     }
 
     selectQueen = (queen) => {
-        let alreadySelected = this.state.selectedQueens;
-        alreadySelected.push(queen);
+        let nowSelected = addQueenToArray(this.state.selectedQueens, queen);
+        let nowSearchable = removeQueenFromArray(this.state.searchableQueens, queen);
         this.setState({
-            selectedQueens: alreadySelected,
+            selectedQueens: nowSelected,
+            searchableQueens: nowSearchable,
             showingQueens: [],
             searchValue: ""
-        });
+        })
     }
 
     removeQueen = (queen) => {
-        let nowSelected = this.state.selectedQueens;
-        let removed = array.remove(nowSelected, function(q: Queen) {
-            return lang.isEqual(q, queen);
-        });
-        if (!removed || removed.length < 1) {
-            throw new Error("failed to remove queen " + queen.getName());
-        }
-        if (removed.length > 1) {
-            throw new Error("somehow removed multiple queens named " + queen.getName() + "?? how did you do this bro");
-        }
+        let nowSelected = removeQueenFromArray(this.state.selectedQueens, queen);
+        let nowSearchable = addQueenToArrayAndSort(this.state.searchableQueens, queen);
         this.setState({
-            selectedQueens: nowSelected
+            selectedQueens: nowSelected,
+            searchableQueens: nowSearchable
         })
     }
 
