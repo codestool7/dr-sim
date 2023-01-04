@@ -1,6 +1,5 @@
 import React from 'react';
 import collection from 'lodash/collection';
-import { AppProps } from '../misc/types';
 import Header from './lilbabies/Header';
 import CastPicker from "./CastPicker";
 import { pickRandomlyFromArray, pickBallTheme, randomNumber, randomNumberWithMin } from "../utils/utils";
@@ -8,7 +7,7 @@ import { pickRandomlyFromArray, pickBallTheme, randomNumber, randomNumberWithMin
 import {queensReads, whoWhyCompetition, whoWhyRelation, lipsyncsEventsBad, lipsyncsEventsGood, miniChallengeDescriptions1, miniChallengeDescriptions2, actingChallengeDescriptions1, actingChallengeDescriptions2, comedyChallengeDescriptions1, comedyChallengeDescriptions2, marketingDescriptions1, marketingDescriptions2, danceDescriptions, designDescriptions, makeoverOptions, runwayDescriptions, improvDescriptions, rusicalDescriptions, themedBallDescriptions, ballDescriptions1, ballDescriptions2, ballDescriptions3, rumixDescriptions, girlGroupDescriptions, talentOptions, reasoningQueens, twoQueensRelation1, twoQueensRelation2, twoQueensRelation3, twoQueensRelation3_2, twoQueensRelation4, twoQueensRelation4_2, twoQueensRelation5, threeQueensRelation1, threeQueensRelation2, threeQueensRelation3, threeQueensRelation4, fourQueensRelation1, fourQueensRelation2, fourQueensRelation3, fourQueensRelation4, multipleQueensRelation} from "../misc/constants";
 import Queen from '../classes/Queen';
 import Season from '../classes/Season';
-import { fetchQueensAndSeasons } from '../utils/queenUtils';
+import fetchData from '../utils/fetchData';
 
 type SimState = {
     allQueens: Array<Queen>,
@@ -16,20 +15,17 @@ type SimState = {
 }
 
 export default class Sim extends React.Component<{}, SimState> {
-    constructor(props: AppProps) {
+    constructor(props: {}) {
         super(props);
         this.state = {allQueens: [], allSeasons: []};
     }
     
     componentDidMount() {
-        let data = fetchQueensAndSeasons();
+        let data = fetchData();
         this.setState({
             allQueens: data.queens,
             allSeasons: data.seasons
         });
-    }
-    
-    componentWillUnmount() {
     }
 
     render() {

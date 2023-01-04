@@ -1,6 +1,7 @@
 import array from 'lodash/array';
 import Queen from "../classes/Queen";
 import Season from "../classes/Season";
+import { sortQueens } from './utils';
 
 type data = {
     queens: Array<Queen>,
@@ -8,7 +9,7 @@ type data = {
 }
 
 // create all standard queens and predefined seasons
-export function fetchQueensAndSeasons(): data {
+export default function fetchData(): data {
 
     // US 1
     const akashia = new Queen("Akashia", 3, 2, 7, 3, 2, 7, 11, "Akashia");
@@ -584,7 +585,7 @@ export function fetchQueensAndSeasons(): data {
     let allSeasons: Array<Season> = [us_1, us_2, us_3, us_4, us_5, us_6, us_7, us_8, us_9, us_10, us_11, us_12, us_13, us_14, us_15, uk_1, uk_2, uk_3, uk_4, canada_1, canada_2, canada_3, holland_1, holland_2, thailand_1, thailand_2, downunder_1, downunder_2, espana_1, espana_2, italia_1, italia_2, france_1, philippines_1, allstars_1, allstars_2, allstars_3, allstars_4, allstars_5, allstars_6, allstars_7, ukvstw, canadavstw];
 
     allQueens = array.uniq(allQueens);
-    allQueens.sort((a, b) => a.getName().toLocaleLowerCase().localeCompare(b.getName().toLocaleLowerCase()));
+    allQueens = sortQueens(allQueens);
     return { queens: allQueens, seasons: allSeasons };
 
     // commenting out custom shit for now
@@ -599,9 +600,4 @@ export function fetchQueensAndSeasons(): data {
     }
     allCustomQueens.splice(0, customLength);
     allQueens.concat(allCustomQueens).sort((a, b) => a.getName().toLowerCase().localeCompare(b.getName().toLowerCase())); */
-}
-
-// remove duplicate queens by object
-function removeDupes(queens) {
-
 }

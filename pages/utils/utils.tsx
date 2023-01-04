@@ -1,3 +1,5 @@
+import Queen from "../classes/Queen";
+
 type BallTheme = {
     name: string,
     themes: string
@@ -22,4 +24,8 @@ export function randomNumber(x: number): number {
 export function randomNumberWithMin(min: number, max: number): number {
     let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
     return randomNumber;
+}
+
+export function sortQueens(queens: Array<Queen>) {
+    return queens.sort((a, b) => a.getName().toLocaleLowerCase().localeCompare(b.getName().toLocaleLowerCase()));
 }

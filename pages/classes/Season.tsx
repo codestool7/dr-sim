@@ -20,6 +20,9 @@ export default class Season {
     getQueens() {
         return this.queens;
     }
+    
+    /*
+    don't think we're gonna need these:
 
     addQueen(queen: Queen) {
         this.queens.push(queen);
@@ -36,4 +39,5 @@ export default class Season {
             throw new Error("somehow removed multiple queens named " + queen.getName() + " from season " + this.getName() + "?? how did you do this bro");
         }
     }
+    */
 }

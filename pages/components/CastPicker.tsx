@@ -1,4 +1,6 @@
 import React from 'react';
+import array from 'lodash/array';
+import lang from 'lodash/lang';
 import Queen from '../classes/Queen';
 import BigText from './lilbabies/BigText';
 import Button from './lilbabies/Button';
@@ -10,20 +12,15 @@ type CastPickerProps = {
 }
 
 type CastPickerState = {
+    showingQueens: Array<Queen>,
     selectedQueens: Array<Queen>,
-    showingQueens: Array<Queen>
+    searchValue: string
 }
 
 export default class ClassPicker extends React.Component<CastPickerProps, CastPickerState> {
     constructor(props: CastPickerProps) {
         super(props);
-        this.state = {selectedQueens: [], showingQueens: []};
-    }
-    
-    componentDidMount() {
-    }
-    
-    componentWillUnmount() {
+        this.state = {showingQueens: [], selectedQueens: [], searchValue: ""};
     }
 
     addRandomStandardContestant() {
@@ -35,20 +32,49 @@ export default class ClassPicker extends React.Component<CastPickerProps, CastPi
     moreKweens() {
     }
     
+    // TODO don't show queens that are already selected
     updateShowingQueens = (event) => {
         const searchString = event.target.value.toLocaleLowerCase();
         if (searchString.length == 0) {
             this.setState({
-                showingQueens: []
+                showingQueens: [],
+                searchValue: ""
             });
         } else {
             let nowShowing = this.props.queens.filter(queen => {
                 return queen.getName().toLocaleLowerCase().includes(searchString);
             });
             this.setState({
-                showingQueens: nowShowing
+                showingQueens: nowShowing,
+                searchValue: searchString
             });
         }
+    }
+
+    selectQueen = (queen) => {
+        let alreadySelected = this.state.selectedQueens;
+        alreadySelected.push(queen);
+        this.setState({
+            selectedQueens: alreadySelected,
+            showingQueens: [],
+            searchValue: ""
+        });
+    }
+
+    removeQueen = (queen) => {
+        let nowSelected = this.state.selectedQueens;
+        let removed = array.remove(nowSelected, function(q: Queen) {
+            return lang.isEqual(q, queen);
+        });
+        if (!removed || removed.length < 1) {
+            throw new Error("failed to remove queen " + queen.getName());
+        }
+        if (removed.length > 1) {
+            throw new Error("somehow removed multiple queens named " + queen.getName() + "?? how did you do this bro");
+        }
+        this.setState({
+            selectedQueens: nowSelected
+        })
     }
 
     render() {
@@ -56,21 +82,29 @@ export default class ClassPicker extends React.Component<CastPickerProps, CastPi
             <BigText text="This is your chance to simulate a drag race season with all your favorite contestants!" />
             <div className="search-wrapper">
                 <BigText text="Choose your contestants:" noBreak/>
-                <input type="search" className="searchInput" placeholder="Type a name.." onChange={this.updateShowingQueens}></input>
+                <input type="search" className="searchInput" placeholder="Type a name.." value={this.state.searchValue} onChange={this.updateShowingQueens}></input>
             </div>
             <div>
                 <Button text="Random" onClick={this.addRandomStandardContestant}/>
                 <Button text="Random Customs" onClick={this.addRandomCustomContestant}/>
-                <Button text="Choose More Contestants" onClick={this.moreKweens} hide/>
+                {/*<Button text="Choose More Contestants" onClick={this.moreKweens}/>*/}
             </div>
-            <div className="drag-cards" data-drag-cards-container>
+            <div className="drag-cards">
                 {this.state.showingQueens.map(queen => (
-                    <QueenCard queen={queen} key={queen.getName()}/>
+                    <QueenCard queen={queen} key={queen.getName()} onSelect={() => this.selectQueen(queen)}/>
                 ))}
             </div>
             <hr />
-            {/*<BigText text="Current Cast:" noBreak/>*/}
-            <div id="chosenKweens" className="drag-cards"></div>
+            {this.state.selectedQueens.length > 0 ? 
+                <div>
+                    <BigText text="Current Cast:" noBreak/>
+                    <div className="drag-cards">
+                    {this.state.selectedQueens.map(queen => (
+                        <QueenCard queen={queen} key={queen.getName()} onRemove={() => this.removeQueen(queen)}/>
+                    ))}
+                    </div>
+                </div> : null
+            }
             {/*<div>
                 <NormalText text="Choose your premiere format:"/>
                 <select id="premiere-format">
