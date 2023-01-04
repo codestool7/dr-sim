@@ -580,9 +580,11 @@ export function fetchQueensAndSeasons(): data {
     const canadavstw_queens = [anita, icesis, kendall, rajah, rita, silky, stephanie, victoriaS, vanity];
     const canadavstw = new Season("canadavstw", canadavstw_queens);
 
-    const allQueens: Array<Queen> = array.concat([], us_1_queens, us_2_queens, us_3_queens, us_4_queens, us_5_queens, us_6_queens, us_7_queens, us_8_queens, us_9_queens, us_10_queens, us_11_queens, us_12_queens, us_13_queens, us_14_queens, us_15_queens, uk_1_queens, uk_2_queens, uk_3_queens, uk_4_queens, canada_1_queens, canada_2_queens, canada_3_queens, holland_1_queens, holland_2_queens, thailand_1_queens, thailand_2_queens, downunder_1_queens, downunder_2_queens, espana_1_queens, espana_2_queens, italia_1_queens, italia_2_queens, france_1_queens, philippines_1_queens, allstars_1_queens, allstars_2_queens, allstars_3_queens, allstars_4_queens, allstars_5_queens, allstars_6_queens, allstars_7_queens, ukvstw_queens, canadavstw_queens);
-    const allSeasons: Array<Season> = [us_1, us_2, us_3, us_4, us_5, us_6, us_7, us_8, us_9, us_10, us_11, us_12, us_13, us_14, us_15, uk_1, uk_2, uk_3, uk_4, canada_1, canada_2, canada_3, holland_1, holland_2, thailand_1, thailand_2, downunder_1, downunder_2, espana_1, espana_2, italia_1, italia_2, france_1, philippines_1, allstars_1, allstars_2, allstars_3, allstars_4, allstars_5, allstars_6, allstars_7, ukvstw, canadavstw];
+    let allQueens: Array<Queen> = array.concat([], us_1_queens, us_2_queens, us_3_queens, us_4_queens, us_5_queens, us_6_queens, us_7_queens, us_8_queens, us_9_queens, us_10_queens, us_11_queens, us_12_queens, us_13_queens, us_14_queens, us_15_queens, uk_1_queens, uk_2_queens, uk_3_queens, uk_4_queens, canada_1_queens, canada_2_queens, canada_3_queens, holland_1_queens, holland_2_queens, thailand_1_queens, thailand_2_queens, downunder_1_queens, downunder_2_queens, espana_1_queens, espana_2_queens, italia_1_queens, italia_2_queens, france_1_queens, philippines_1_queens, pangina);
+    let allSeasons: Array<Season> = [us_1, us_2, us_3, us_4, us_5, us_6, us_7, us_8, us_9, us_10, us_11, us_12, us_13, us_14, us_15, uk_1, uk_2, uk_3, uk_4, canada_1, canada_2, canada_3, holland_1, holland_2, thailand_1, thailand_2, downunder_1, downunder_2, espana_1, espana_2, italia_1, italia_2, france_1, philippines_1, allstars_1, allstars_2, allstars_3, allstars_4, allstars_5, allstars_6, allstars_7, ukvstw, canadavstw];
 
+    allQueens = array.uniq(allQueens);
+    allQueens.sort((a, b) => a.getName().toLocaleLowerCase().localeCompare(b.getName().toLocaleLowerCase()));
     return { queens: allQueens, seasons: allSeasons };
 
     // commenting out custom shit for now
@@ -597,4 +599,9 @@ export function fetchQueensAndSeasons(): data {
     }
     allCustomQueens.splice(0, customLength);
     allQueens.concat(allCustomQueens).sort((a, b) => a.getName().toLowerCase().localeCompare(b.getName().toLowerCase())); */
+}
+
+// remove duplicate queens by object
+function removeDupes(queens) {
+
 }

@@ -10,16 +10,16 @@ type CastPickerProps = {
     queens: Array<Queen>
 }
 
-export default class ClassPicker extends React.Component<CastPickerProps, AppState> {
-    allQueens: Array<Queen> = [];
-    selectedQueens: Array<Queen> = [];
-    showingQueens: Array<Queen> = [];
+type CastPickerState = {
+    selectedQueens: Array<Queen>,
+    showingQueens: Array<Queen>
+}
 
+export default class ClassPicker extends React.Component<CastPickerProps, CastPickerState> {
     constructor(props: CastPickerProps) {
         super(props);
-        this.allQueens = props.queens;
-        this.showingQueens.push(this.allQueens[0]); // test showing one
-        this.state = {};
+        this.state = {selectedQueens: [], showingQueens: []};
+        //this.showingQueens.push(props.queens[0]); // test showing one
     }
     
     componentDidMount() {
@@ -28,21 +28,46 @@ export default class ClassPicker extends React.Component<CastPickerProps, AppSta
     componentWillUnmount() {
     }
 
+    addRandomStandardContestant() {
+    }
+    
+    addRandomCustomContestant() {
+    }
+    
+    moreKweens() {
+    }
+    
+    updateShowingQueens = (event) => {
+        const searchString = event.target.value.toLocaleLowerCase();
+        if (searchString.length == 0) {
+            this.setState({
+                showingQueens: []
+            });
+        } else {
+            let nowShowing = this.props.queens.filter(queen => {
+                return queen.getName().toLocaleLowerCase().includes(searchString);
+            });
+            this.setState({
+                showingQueens: nowShowing
+            });
+        }
+    }
+
     render() {
         return <div className="mainPart" id="MainBlock">
             <BigText text="This is your chance to simulate a drag race season with all your favorite contestants!" />
             <div className="search-wrapper">
                 <BigText text="Choose your contestants:" noBreak/>
-                <input type="search" id="search" className="searchInput" placeholder="Type a name.." data-search></input>
+                <input type="search" className="searchInput" placeholder="Type a name.." onChange={this.updateShowingQueens}></input>
             </div>
             <div>
-                <Button text="Random" onClick={addRandomStandardContestant}/>
-                <Button text="Random Customs" onClick={addRandomCustomContestant}/>
-                <Button text="Choose More Contestants" onClick={moreKweens} hide/>
+                <Button text="Random" onClick={this.addRandomStandardContestant}/>
+                <Button text="Random Customs" onClick={this.addRandomCustomContestant}/>
+                <Button text="Choose More Contestants" onClick={this.moreKweens} hide/>
             </div>
             <div className="drag-cards" data-drag-cards-container>
-                {this.showingQueens.map(queen => (
-                    <QueenCard queen={queen}/>
+                {this.state.showingQueens.map(queen => (
+                    <QueenCard queen={queen} key={queen.getName()}/>
                 ))}
             </div>
             <hr />
@@ -115,18 +140,6 @@ export default class ClassPicker extends React.Component<CastPickerProps, AppSta
             </div>*/}
         </div>;
     }
-}
-
-function addRandomStandardContestant() {
-
-}
-
-function addRandomCustomContestant() {
-
-}
-
-function moreKweens() {
-
 }
 
 /*
@@ -289,7 +302,7 @@ queenCardContainer.addEventListener("click", e => {
     }
 })
 
-// update showing queens list with array of selected queens
+// update chosen queens list with array of selected queens
 function updateCast() {
     chosenKweensContainer.innerHTML = "";
     currentCast.forEach(queen => {

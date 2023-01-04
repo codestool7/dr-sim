@@ -1,4 +1,3 @@
-import collection from 'lodash/collection';
 import math from 'lodash/math';
 import { teamNames } from "../misc/constants";
 import Queen from "./Queen";
@@ -9,9 +8,9 @@ export default class Team extends Queen {
 
     constructor(queenA: Queen, queenB: Queen) {
         let queens = [queenA, queenB];
-        let sortedQueens = collection.orderBy(queens, [(queen: { getName: () => string; }) => queen.getName()], ['asc']);
-        let queen1 = sortedQueens[0];
-        let queen2 = sortedQueens[1];
+        queens.sort((a, b) => a.getName().toLocaleLowerCase().localeCompare(b.getName().toLocaleLowerCase()));
+        let queen1 = queens[0];
+        let queen2 = queens[1];
         let name = getPredeterminedTeamName(queen1, queen2);
         if (!name) {
             let queen1NamePieces = queen1.getName().split(' ');
@@ -28,7 +27,7 @@ export default class Team extends Queen {
         }
         // set team lip sync score to 0 bc we'll use the score of the queen who's lipsyncing
         super(name, math.mean(queen1.getActingStat(), queen2.getActingStat()), math.mean(queen1.getComedyStat(), queen2.getComedyStat()), math.mean(queen1.getDanceStat(), queen2.getDanceStat()), math.mean(queen1.getDesignStat(), queen2.getDesignStat()), math.mean(queen1.getImprovStat(), queen2.getImprovStat()), math.mean(queen1.getRunwayStat(), queen2.getRunwayStat()), 0);
-        this.queens = sortedQueens;
+        this.queens = queens;
         this.teamName = name;
     }
 

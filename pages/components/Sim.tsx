@@ -11,18 +11,19 @@ import Season from '../classes/Season';
 import { fetchQueensAndSeasons } from '../utils/queenUtils';
 
 export default class Sim extends React.Component<AppProps, AppState> {
-    allQueens: Array<Queen> = [];
-    allSeasons: Array<Season> = [];
+    allQueens: Array<Queen>;
+    allSeasons: Array<Season>;
 
     constructor(props: AppProps) {
         super(props);
+        this.state = {};
         let data = fetchQueensAndSeasons();
         this.allQueens = data.queens;
         this.allSeasons = data.seasons;
-        this.state = {};
     }
     
     componentDidMount() {
+        
     }
     
     componentWillUnmount() {
