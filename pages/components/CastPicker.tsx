@@ -6,6 +6,7 @@ import NormalText from './lilbabies/NormalText';
 import QueenCard from './lilbabies/QueenCard';
 import { addQueenToArray, addQueenToArrayAndSort, pickRandomlyFromArray, removeQueenFromArray } from '../utils/utils';
 import Season from '../classes/Season';
+import Header from './lilbabies/Header';
 
 type CastPickerProps = {
     queens: Array<Queen>,
@@ -105,101 +106,105 @@ export default class ClassPicker extends React.Component<CastPickerProps, CastPi
     }
 
     render() {
-        return <div className="mainPart" id="MainBlock">
-            <BigText text="This is your chance to simulate a drag race season with all your favorite contestants!" />
-            <div className="search-wrapper">
-                <BigText text="Choose your contestants:" noBreak/>
-                <input type="search" className="searchInput" placeholder={this.canAddMoreQueens() ? "Type a name.." : "You can't choose more than 20 contestants"} value={this.state.searchValue} onChange={this.updateShowingQueens}></input>
-            </div>
-            <div>
-                {(this.state.searchableQueens.length > 0 && this.canAddMoreQueens) ?
-                    <Button text="Random" onClick={this.addRandomStandardContestant}/>
-                    : null
-                }
-                {/*<Button text="Random Customs" onClick={this.addRandomCustomContestant}/>*/}
-                {/*<Button text="Choose More Contestants" onClick={this.moreKweens}/>*/}
-            </div>
-            <div className="drag-cards">
-                {this.state.showingQueens.map(queen => (
-                    <QueenCard queen={queen} key={queen.getName()} onSelect={() => this.selectQueen(queen)}/>
-                ))}
-            </div>
-            <hr />
-            {this.state.selectedQueens.length > 0 ? 
+        return <div>
+            <Header
+                text="Drag Race Simulator!"
+            />
+            <div className="mainPart" id="MainBlock">
+                <BigText text="This is your chance to simulate a drag race season with all your favorite contestants!" />
+                <div className="search-wrapper">
+                    <BigText text="Choose your contestants:" noBreak/>
+                    <input type="search" className="searchInput" placeholder={this.canAddMoreQueens() ? "Type a name.." : "You can't choose more than 20 contestants"} value={this.state.searchValue} onChange={this.updateShowingQueens}></input>
+                </div>
                 <div>
-                    <BigText text={"Current Cast: " + this.state.selectedQueens.length} noBreak/>
-                    <div className="drag-cards">
-                    {this.state.selectedQueens.map(queen => (
-                        <QueenCard queen={queen} key={queen.getName()} onRemove={() => this.removeQueen(queen)}/>
+                    {(this.state.searchableQueens.length > 0 && this.canAddMoreQueens) &&
+                        <Button text="Random" onClick={this.addRandomStandardContestant}/>
+                    }
+                    {/*<Button text="Random Customs" onClick={this.addRandomCustomContestant}/>*/}
+                    {/*<Button text="Choose More Contestants" onClick={this.moreKweens}/>*/}
+                </div>
+                <div className="drag-cards">
+                    {this.state.showingQueens.map(queen => (
+                        <QueenCard queen={queen} key={queen.getName()} onSelect={() => this.selectQueen(queen)}/>
                     ))}
+                </div>
+                <hr />
+                {this.state.selectedQueens.length > 0 && 
+                    <div>
+                        <BigText text={"Current Cast: " + this.state.selectedQueens.length} noBreak/>
+                        <div className="drag-cards">
+                        {this.state.selectedQueens.map(queen => (
+                            <QueenCard queen={queen} key={queen.getName()} onRemove={() => this.removeQueen(queen)}/>
+                        ))}
+                        </div>
                     </div>
-                </div> : null
-            }
-            {/*<div>
-                <NormalText text="Choose your premiere format:"/>
-                <select id="premiere-format">
-                    <option>Normal premiere</option>
-                    <option value="s6-premiere">Double Premiere</option>
-                    <option value="s9-premiere">Normal Premiere (No Elimination)</option>
-                    <option value="s12-premiere">Double Premiere (No Elimination)</option>
-                    <option value="porkchop">Porkchop Premiere</option>
-                    <option value="uk3-premiere">UK3 Premiere</option>
-                    <option value="s14-premiere">Double Premiere (Talent Show)</option>
-                </select>
+                }
+                {/*<div>
+                    <NormalText text="Choose your premiere format:"/>
+                    <select id="premiere-format">
+                        <option>Normal premiere</option>
+                        <option value="s6-premiere">Double Premiere</option>
+                        <option value="s9-premiere">Normal Premiere (No Elimination)</option>
+                        <option value="s12-premiere">Double Premiere (No Elimination)</option>
+                        <option value="porkchop">Porkchop Premiere</option>
+                        <option value="uk3-premiere">UK3 Premiere</option>
+                        <option value="s14-premiere">Double Premiere (Talent Show)</option>
+                    </select>
+                </div>
+                <div>
+                    <NormalText text="Choose your season format:"/>
+                    <select id="format">
+                        <option value="regular">Regular Format</option>
+                        <option value="thailand">Thailand's Format</option>
+                        <option value="team">Teams Format</option>
+                        <option value="all-stars">Lipsync For Your Legacy Format</option>
+                        <option value="lipsync-assassin">Lipsync Assassin Format</option>
+                        <option value="all-winners">All Winners Format</option>
+                    </select>
+                </div>
+                <div>
+                    <NormalText text="Choose your returning format:"/>
+                    <select id="returning">
+                        <option>None</option>
+                        <option value="choose">Choose who returns</option>
+                        <option value="random">Random queen returns</option>
+                        <option value="votes">Remaining queens vote</option>
+                        <option value="conjoined-queens">Conjoined Queens Makeover</option>
+                        <option value="queensofcomedy">Queens of Comedy</option>
+                        <option value="kittygirlgroup">Kitty Girl Group</option>
+                        <option value="smackdown">Lip-Sync Smackdown</option>
+                        <option value="lalaparuza">LaLaPaRuZa</option>
+                    </select>
+                </div>
+                <div>
+                    <NormalText text="Choose your finale format:"/>
+                    <select id="finale">
+                        <option value="top5">Top 5</option>
+                        <option value="top4">Top 4</option>
+                        <option value="top3">Top 3</option>
+                        <option value="teams">Teams Finale</option>
+                        <option value="LFTC">Lip-Sync For The Crown</option>
+                        <option value="LFTF">Lip Sync for the Finale</option>
+                        <option value="jury">Jury Vote</option>
+                        <option value="randomFinale">Random Finale</option>
+                    </select>
+                </div>
+                <br />*/}
+                <div>
+                    <Button text="Simulate now!" onClick={this.checkSettingsAndGo}/>
+                </div>
+                {/*<hr />
+                <div>
+                    <BigText text="Options:" noBreak/> <br />
+                    <input type="checkbox" id="immunity"></input> Add immunity<br />
+                    <input type="checkbox" id="disableDouble"></input> Disable double shantays and sashays<br />
+                    <input type="checkbox" id="riggory"></input> Disable Challenge Riggory<br />
+                    <input type="checkbox" id="riggoryLipsync"></input> Disable Lipsync Riggory
+                    <NormalText text="Chocolate Bar Twist:"/>
+                    <input type="checkbox" id="chocolateBar"></input> Random
+                    <input type="checkbox" id="chocolateBarChoosable"></input> Choosable
+                </div>*/}
             </div>
-            <div>
-                <NormalText text="Choose your season format:"/>
-                <select id="format">
-                    <option value="regular">Regular Format</option>
-                    <option value="thailand">Thailand's Format</option>
-                    <option value="team">Teams Format</option>
-                    <option value="all-stars">Lipsync For Your Legacy Format</option>
-                    <option value="lipsync-assassin">Lipsync Assassin Format</option>
-                    <option value="all-winners">All Winners Format</option>
-                </select>
-            </div>
-            <div>
-                <NormalText text="Choose your returning format:"/>
-                <select id="returning">
-                    <option>None</option>
-                    <option value="choose">Choose who returns</option>
-                    <option value="random">Random queen returns</option>
-                    <option value="votes">Remaining queens vote</option>
-                    <option value="conjoined-queens">Conjoined Queens Makeover</option>
-                    <option value="queensofcomedy">Queens of Comedy</option>
-                    <option value="kittygirlgroup">Kitty Girl Group</option>
-                    <option value="smackdown">Lip-Sync Smackdown</option>
-                    <option value="lalaparuza">LaLaPaRuZa</option>
-                </select>
-            </div>
-            <div>
-                <NormalText text="Choose your finale format:"/>
-                <select id="finale">
-                    <option value="top5">Top 5</option>
-                    <option value="top4">Top 4</option>
-                    <option value="top3">Top 3</option>
-                    <option value="teams">Teams Finale</option>
-                    <option value="LFTC">Lip-Sync For The Crown</option>
-                    <option value="LFTF">Lip Sync for the Finale</option>
-                    <option value="jury">Jury Vote</option>
-                    <option value="randomFinale">Random Finale</option>
-                </select>
-            </div>
-            <br />*/}
-            <div>
-                <Button text="Simulate now!" onClick={this.checkSettingsAndGo}/>
-            </div>
-            {/*<hr />
-            <div>
-                <BigText text="Options:" noBreak/> <br />
-                <input type="checkbox" id="immunity"></input> Add immunity<br />
-                <input type="checkbox" id="disableDouble"></input> Disable double shantays and sashays<br />
-                <input type="checkbox" id="riggory"></input> Disable Challenge Riggory<br />
-                <input type="checkbox" id="riggoryLipsync"></input> Disable Lipsync Riggory
-                <NormalText text="Chocolate Bar Twist:"/>
-                <input type="checkbox" id="chocolateBar"></input> Random
-                <input type="checkbox" id="chocolateBarChoosable"></input> Choosable
-            </div>*/}
         </div>;
     }
 }

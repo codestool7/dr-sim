@@ -1,6 +1,5 @@
 import React from 'react';
 import collection from 'lodash/collection';
-import Header from './lilbabies/Header';
 import CastPicker from "./CastPicker";
 import { pickRandomlyFromArray, pickBallTheme, randomNumber, randomNumberWithMin } from "../utils/utils";
 //import { Scene, MiniChallenge, ActingChallenge, ComedyChallenge, MarketingChallenge, DanceChallenge, DesignChallenge, RunwayChallenge, ImprovChallenge, SnatchGame, Rusical, Ball, Rumix, GirlGroup, TalentShow } from "./classes";
@@ -9,6 +8,9 @@ import Queen from '../classes/Queen';
 import Season from '../classes/Season';
 import fetchData from '../utils/fetchData';
 import { GameStatus } from '../misc/enums';
+import FullCast from './FullCast';
+import SeasonProgress from './SeasonProgress';
+import Button from './lilbabies/Button';
 
 type SimState = {
     allQueens: Array<Queen>,
@@ -29,18 +31,55 @@ export default class Sim extends React.Component<{}, SimState> {
     startSeason = (season: Season) => {
         console.log("lets go henny!!!");
         console.log(season);
+        this.setState({
+            currentSeason: season,
+            gameStatus: GameStatus.CastScreen
+        });
+        this.scrollToTop();
+    }
+
+    proceed = () => {
+        let status = this.state.gameStatus;
+        status++;
+        this.setState({
+            gameStatus: status
+        });
+        this.scrollToTop();
     }
 
     render() {
         return <div>
-            <Header
-                text="Drag Race Simulator!"
-            />
-            {(this.state.gameStatus == GameStatus.NotStarted) ?
+            {(this.state.gameStatus == GameStatus.NotStarted) &&
                 <CastPicker queens={this.state.allQueens} startSeason={this.startSeason}/>
-                : null
+            }
+            {(this.state.gameStatus == GameStatus.CastScreen && this.state.elapsedEpisodes == 0) &&
+                <FullCast season={this.state.currentSeason}/>
+            }
+            {(this.state.gameStatus == GameStatus.CastScreen && this.state.elapsedEpisodes > 0) &&
+                <SeasonProgress season={this.state.currentSeason}/>
+            }
+            {(this.state.gameStatus == GameStatus.MiniChallenge) &&
+                <div>mini time</div>
+            }
+            {this.showProceed() &&
+                <Button text="Proceed" onClick={this.proceed}/>
             }
         </div>;
+    }
+
+    showProceed() {
+        if (this.state.gameStatus != GameStatus.NotStarted) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
     }
 }
 

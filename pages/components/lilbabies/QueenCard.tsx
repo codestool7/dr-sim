@@ -18,7 +18,7 @@ export default function QueenCard(props: QueenCardProps) {
                 <QueenPic queen={props.queen} color="black"/>
             </div>
             <div className="data-header">{props.queen.getName()}</div>
-            {props.onRemove ? <Button className="data-body" text="X" onClick={props.onRemove} /> : null}
+            {props.onRemove && <Button className="data-body" text="X" onClick={props.onRemove} />}
         </div>
     );
 }
