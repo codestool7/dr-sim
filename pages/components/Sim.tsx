@@ -17,15 +17,12 @@ type SimState = {
 export default class Sim extends React.Component<{}, SimState> {
     constructor(props: {}) {
         super(props);
-        this.state = {allQueens: [], allSeasons: []};
+        let data = fetchData();
+        this.state = {allQueens: data.queens, allSeasons: data.seasons};
     }
     
     componentDidMount() {
-        let data = fetchData();
-        this.setState({
-            allQueens: data.queens,
-            allSeasons: data.seasons
-        });
+        
     }
 
     render() {

@@ -4,7 +4,7 @@ import BigText from './lilbabies/BigText';
 import Button from './lilbabies/Button';
 import NormalText from './lilbabies/NormalText';
 import QueenCard from './lilbabies/QueenCard';
-import { addQueenToArray, addQueenToArrayAndSort, removeQueenFromArray } from '../utils/utils';
+import { addQueenToArray, addQueenToArrayAndSort, pickRandomlyFromArray, removeQueenFromArray } from '../utils/utils';
 
 type CastPickerProps = {
     queens: Array<Queen>
@@ -27,7 +27,9 @@ export default class ClassPicker extends React.Component<CastPickerProps, CastPi
         this.state = {searchableQueens: props.queens, showingQueens: [], selectedQueens: [], searchValue: ""};
     }
 
-    addRandomStandardContestant() {
+    addRandomStandardContestant = () => {
+        let queen = pickRandomlyFromArray(this.state.searchableQueens);
+        this.selectQueen(queen);
     }
     
     addRandomCustomContestant() {
@@ -37,32 +39,36 @@ export default class ClassPicker extends React.Component<CastPickerProps, CastPi
     }
     
     updateShowingQueens = (event) => {
-        const searchString = event.target.value.toLocaleLowerCase();
-        if (searchString.length == 0) {
-            this.setState({
-                showingQueens: [],
-                searchValue: ""
-            });
-        } else {
-            let nowShowing = this.state.searchableQueens.filter(queen => {
-                return queen.getName().toLocaleLowerCase().includes(searchString);
-            });
-            this.setState({
-                showingQueens: nowShowing,
-                searchValue: searchString
-            });
+        if (this.canAddMoreQueens()) {
+            const searchString = event.target.value.toLocaleLowerCase();
+            if (searchString.length == 0) {
+                this.setState({
+                    showingQueens: [],
+                    searchValue: ""
+                });
+            } else {
+                let nowShowing = this.state.searchableQueens.filter(queen => {
+                    return queen.getName().toLocaleLowerCase().includes(searchString);
+                });
+                this.setState({
+                    showingQueens: nowShowing,
+                    searchValue: searchString
+                });
+            }
         }
     }
 
     selectQueen = (queen) => {
-        let nowSelected = addQueenToArray(this.state.selectedQueens, queen);
-        let nowSearchable = removeQueenFromArray(this.state.searchableQueens, queen);
-        this.setState({
-            selectedQueens: nowSelected,
-            searchableQueens: nowSearchable,
-            showingQueens: [],
-            searchValue: ""
-        })
+        if (this.canAddMoreQueens()) {
+            let nowSelected = addQueenToArray(this.state.selectedQueens, queen);
+            let nowSearchable = removeQueenFromArray(this.state.searchableQueens, queen);
+            this.setState({
+                selectedQueens: nowSelected,
+                searchableQueens: nowSearchable,
+                showingQueens: [],
+                searchValue: ""
+            })
+        }
     }
 
     removeQueen = (queen) => {
@@ -74,16 +80,27 @@ export default class ClassPicker extends React.Component<CastPickerProps, CastPi
         })
     }
 
+    canAddMoreQueens = () => {
+        if (this.state.selectedQueens.length < 20) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     render() {
         return <div className="mainPart" id="MainBlock">
             <BigText text="This is your chance to simulate a drag race season with all your favorite contestants!" />
             <div className="search-wrapper">
                 <BigText text="Choose your contestants:" noBreak/>
-                <input type="search" className="searchInput" placeholder="Type a name.." value={this.state.searchValue} onChange={this.updateShowingQueens}></input>
+                <input type="search" className="searchInput" placeholder={this.canAddMoreQueens() ? "Type a name.." : "You can't choose more than 20 contestants"} value={this.state.searchValue} onChange={this.updateShowingQueens}></input>
             </div>
             <div>
-                <Button text="Random" onClick={this.addRandomStandardContestant}/>
-                <Button text="Random Customs" onClick={this.addRandomCustomContestant}/>
+                {(this.state.searchableQueens.length > 0 && this.canAddMoreQueens) ?
+                    <Button text="Random" onClick={this.addRandomStandardContestant}/>
+                    : null
+                }
+                {/*<Button text="Random Customs" onClick={this.addRandomCustomContestant}/>*/}
                 {/*<Button text="Choose More Contestants" onClick={this.moreKweens}/>*/}
             </div>
             <div className="drag-cards">
@@ -172,13 +189,6 @@ export default class ClassPicker extends React.Component<CastPickerProps, CastPi
 }
 
 /*
-<template data-drag-template>
-    <div className="card">
-        <div className="data-image" data-image></div>
-        <div className="header" data-header></div>
-    </div>
-</template>
-
 // first button onclick
 function addRandomContestant() {
     let button = document.getElementById("randomK");
@@ -253,125 +263,4 @@ function moreKweens() {
         window.alert("Remove one contestant of your current cast..");
     }
 }
-
-const queenCardTemplate = document.querySelector("[data-drag-template]");
-const queenCardContainer = document.querySelector("[data-drag-cards-container]");
-const searchInput = document.querySelector("[data-search]");
-let chosenKweensContainer = document.getElementById("chosenKweens");
-let showingQueens = [];
-
-// event listener to update queen options when you type a character
-searchInput.addEventListener("input", e => {
-    const value = e.target.value.toLowerCase();
-    showingQueens.forEach(queen => {
-        const isVisible = queen.name.toLowerCase().includes(value);
-        if (value == "") {
-            queen.element.classList.toggle("hide", isVisible);
-        } else {
-            queen.element.classList.toggle("hide", !isVisible);
-        }
-    });
-});
-
-// maps allQueens list to new showingQueens list that includes the dom element for each queen
-showingQueens = allQueens.map(queen => {
-    const card = queenCardTemplate.content.cloneNode(true).children[0];
-    const cardImage = card.querySelector("[data-image]");
-    const header = card.querySelector("[data-header]");
-    let image = document.createElement("img");
-    image.src = queen.image;
-    image.setAttribute("style", `border-color: black; width: 105px; height: 105px;`);
-    cardImage.appendChild(image);
-    header.textContent = queen._name;
-    card.setAttribute("id", queen._name);
-    cardImage.setAttribute("id", queen._name);
-    header.setAttribute("id", queen._name);
-    image.setAttribute("id", queen._name);
-    queenCardContainer.append(card);
-    return { name: queen._name, element: card}
-});
-
-// when you select a queen to add
-queenCardContainer.addEventListener("click", e => {
-    if (e.target && (e.target.matches("div.card") || e.target.parentNode.matches("div.card") || e.target.matches("img") ) ) {
-        let id;
-        if (e.target.matches("div.card")) {
-            id = e.target.id
-        } else if (e.target.parentNode.matches("div.card")) {
-            id = e.target.parentNode.id
-        } else if (e.target.matches("img")) {
-            id = e.target.parentNode.parentNode.id
-        }
-        let queenFound = allQueens.find((queen) => {
-            return queen._name == id
-        });
-        //get selected names and compare them to the all queens list:
-        for (let k = 0; k < allQueens.length; k++) {
-            if (queenFound.getName() == allQueens[k].getName()) {
-                currentCast.push(allQueens[k]);
-                break;
-            }
-        }
-        updateCast();
-        resetSearch();
-        let button = document.getElementById("randomK");
-        let button1 = document.getElementById("moreK");
-        if (currentCast.length == 20) {
-            searchInput.setAttribute("readonly", true);
-            searchInput.removeAttribute("placeholder");
-            searchInput.setAttribute("placeholder", "You can't choose more than 20 contestants");
-            button.classList.toggle("hide", true);
-            button1.classList.toggle("hide", false);
-        }
-        let big = document.getElementById("castBig");
-        if (currentCast.length != 0) {
-            big.classList.toggle("hide", false);
-            big.innerHTML = "Current Cast: " + currentCast.length;
-        }
-    }
-})
-
-// update chosen queens list with array of selected queens
-function updateCast() {
-    chosenKweensContainer.innerHTML = "";
-    currentCast.forEach(queen => {
-        chosenKweensContainer.innerHTML += addKween(queen);
-    });
-}
-
-// shows specific queen in current cast list
-function addKween(queen) {
-    return `<div  class="card">
-        <div class="data-image">
-            <img src="`+queen.image+`" style= "border-color: black; width: 105px; height: 105px;"/>
-        </div>
-        <div class="data-header">`+queen._name+`</div>
-        <div class="data-body" id="`+queen._name+`"><button id="remove">X</button></div>
-        </div>`
-}
-
-// reset search box after selecting queen to add
-function resetSearch() {
-    searchInput.value = "";
-    showingQueens.forEach(queen => {
-        queen.element.classList.toggle("hide", true);
-    });
-}
-
-// when you click the x to remove a queen
-chosenKweensContainer.addEventListener("click",function(e) {
-    if (e.target && e.target.matches("button#remove")) {
-        let id = e.target.parentNode.id;
-        let queenFound = currentCast.find((queen) => {
-            return queen._name == id
-        });
-        currentCast.splice(currentCast.indexOf(queenFound), 1);
-        updateCast();
-        let big = document.getElementById("castBig");
-        big.innerHTML = "Current Cast: " + currentCast.length;
-        if (currentCast.length == 0) {
-            big.classList.toggle("hide", true);
-        }
-    }
-})
 */

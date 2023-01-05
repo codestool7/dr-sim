@@ -8,7 +8,6 @@ type QueenCardProps = {
     onRemove?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-// TODO
 // if onSelect is passed in we call that if clicked anywhere on the card and don't render X button
 // if onRemove is passed in we render X button and call it if X is clicked
 // should only have one!

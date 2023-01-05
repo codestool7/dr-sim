@@ -7,7 +7,7 @@ type BallTheme = {
     themes: string
 }
 
-export function pickRandomlyFromArray(choices: Array<string>): string {
+export function pickRandomlyFromArray(choices: Array<any>): any {
     let rand = randomNumber(choices.length);
     return choices[rand];
 }
@@ -37,7 +37,7 @@ export function sortQueens(queens: Array<Queen>) {
 export function addQueenToArray(queens: Array<Queen>, queen: Queen) {
     let beforeLength = queens.length
     queens.push(queen);
-    if(queens.length != beforeLength + 1) {
+    if (queens.length != beforeLength + 1) {
         throw new Error("failed to add queen " + queen.getName() + " to array")
     }
     return queens;

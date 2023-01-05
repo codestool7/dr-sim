@@ -1,3 +1,5 @@
+export {};
+
 /* function newEpisode() {
     if (episodeCount == 0 && !(porkchopPremiere || s14Premiere || s12Premiere || s6Premiere)) {
         currentCast.forEach((queen) => {

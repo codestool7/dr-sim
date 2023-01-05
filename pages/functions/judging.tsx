@@ -1,3 +1,5 @@
+export {};
+
 /* function judging() {
     if ((s12Premiere || porkchopPremiere) && premiereCounter <= 2) {
         //add 2 queens to the top and the rest is safe

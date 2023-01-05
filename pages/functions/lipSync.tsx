@@ -1,3 +1,5 @@
+export {};
+
 /* function lipsyncDesc() {
     let screen = new Scene();
     screen.clean();

@@ -1,3 +1,5 @@
+export {};
+
 /* function createChallenge(challenges, miniChallengeScreen) {
     for (let i = 0; i < currentCast.length; i++){
         currentCast[i].episodesOn++;
