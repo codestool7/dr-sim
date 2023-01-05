@@ -9,10 +9,6 @@ export {};
                 }
             }
         });
-        let koffeDiv = document.getElementsByClassName("floatingchat-container-wrap");
-        let koffeDivMovil = document.getElementsByClassName("floatingchat-container-wrap-mobi");
-        koffeDiv[0].classList.toggle("hide", true);
-        koffeDivMovil[0].classList.toggle("hide", true);
     }
     if (s9Premiere && episodeCount == 0) {
         currentCast.splice(currentCast.indexOf(lateQueen), 1);
@@ -1165,10 +1161,6 @@ function contestantProgress() {
         screen.createButton("Download", "downloadTR()", "downloadTR");
         screen.createHorizontalLine();
         screen.createButton("Back to main page", "location.reload()");
-        let koffeDiv = document.getElementsByClassName("floatingchat-container-wrap");
-        let koffeDivMovil = document.getElementsByClassName("floatingchat-container-wrap-mobi");
-        koffeDiv[0].classList.toggle("hide", false);
-        koffeDivMovil[0].classList.toggle("hide", false);
     }
     let stats = document.querySelectorAll("#stat");
     for (let i = 0; i < stats.length; i++) {

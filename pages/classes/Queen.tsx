@@ -1,4 +1,11 @@
+import array from 'lodash/array';
+import lang from 'lodash/lang';
 import { randomNumberWithMin } from "../utils/utils";
+
+type Relationship = {
+    queen: Queen,
+    score: number
+}
 
 export default class Queen {
     /*trackRecord: string[] = [];
@@ -38,6 +45,7 @@ export default class Queen {
     lipsyncStat: number;
     image: string;
     custom: boolean;
+    sisters: Array<Relationship>;
 
     constructor(name: string, acting: number, comedy: number, dance: number, design: number, improv: number, runway: number, lipsync: number, image = "noimage", custom = false) {
         this.name = name;
@@ -58,11 +66,83 @@ export default class Queen {
         else {
             this.image = "/queens/" + image + ".webp";
         }
+
+        this.sisters = [];
     }
     
     calculateScores(min: number, max: number, stat = 0) {
         let score = randomNumberWithMin(min, max);
         return score - stat;
+    }
+
+    initializeRelations(queens: Array<Queen>) {
+        this.sisters = [];
+        for (let i = 0; i < queens.length; i++) {
+            let queen = queens[i];
+            if (!this.isItMe(queen)) {
+                let sis: Relationship = {queen: queen, score: 0};
+                this.sisters.push(sis);
+            }
+        }
+    }
+
+    // adjusts the relationship witht the given queen the number of points (positive or negative)
+    adjustRelationship(queen: Queen, adjustment: number) {
+        let sisIndex = array.findIndex(this.sisters, function(s: Relationship) {
+            return lang.isEqual(s.queen, queen);
+        });
+        this.sisters[sisIndex].score += adjustment;
+    }
+
+    // is given queen me? am I the drama?
+    isItMe(q: Queen) {
+        return lang.isEqual(this, q);
+    }
+
+    getFriends(): Array<Queen> {
+        let friends: Array<Queen> = [];
+        for (let i = 0; i < this.sisters.length; i++) {
+            if (this.sisters[i].score >= 7) {
+                friends.push(this.sisters[i].queen);
+            }
+        }
+        return friends;
+    }
+
+    getEnemies(): Array<Queen> {
+        let enemies: Array<Queen> = [];
+        for (let i = 0; i < this.sisters.length; i++) {
+            if (this.sisters[i].score <= -5) {
+                enemies.push(this.sisters[i].queen);
+            }
+        }
+        return enemies;
+    }
+
+    bestSister(): Queen | null {
+        if(!this.sisters || this.sisters.length == 0) {
+            return null;
+        }
+        let bestie = this.sisters[0];
+        for (let i = 1; i < this.sisters.length; i++) {
+            if (this.sisters[i].score > bestie.score) {
+                bestie = this.sisters[i];
+            }
+        }
+        return bestie.queen;
+    }
+
+    worstSister(): Queen | null {
+        if(!this.sisters || this.sisters.length == 0) {
+            return null;
+        }
+        let worstie = this.sisters[0];
+        for (let i = 1; i < this.sisters.length; i++) {
+            if (this.sisters[i].score < worstie.score) {
+                worstie = this.sisters[i];
+            }
+        }
+        return worstie.queen;
     }
 
     getName() {
