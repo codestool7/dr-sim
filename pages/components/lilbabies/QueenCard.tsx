@@ -14,11 +14,11 @@ type QueenCardProps = {
 export default function QueenCard(props: QueenCardProps) {
     return (
         <div className="card" onClick={props.onSelect}>
-            <div className="data-image">
+            <div>
                 <QueenPic queen={props.queen} color="black"/>
             </div>
-            <div className="data-header">{props.queen.getName()}</div>
-            {props.onRemove && <Button className="data-body" text="X" onClick={props.onRemove} />}
+            <div>{props.queen.getName()}</div>
+            {props.onRemove && <Button text="X" onClick={props.onRemove} />}
         </div>
     );
 }

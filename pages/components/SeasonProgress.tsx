@@ -7,7 +7,7 @@ type SeasonProgressProps = {
 }
 
 export default class SeasonProgress extends React.Component<SeasonProgressProps, {}> {
-    render() {
+    render() { // TODO do this later
         return <div>
             <Header
                 text="Season Progress"

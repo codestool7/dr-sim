@@ -1,14 +1,29 @@
 import React from 'react';
+import NavBar from './components/NavBar';
 import Sim from './components/Sim';
-import Result from './components/Result';
 import ToTop from './components/ToTop';
+import { NavBarTab } from './misc/enums';
 
-export default class Index extends React.Component {
+type AppState = {
+    selectedTab: NavBarTab
+}
+
+export default class App extends React.Component<{}, AppState> {
+    constructor(props: {}) {
+        super(props);
+        this.state = {selectedTab: NavBarTab.CustomSeason};
+    }
+
+    selectTab = (tab: NavBarTab) => {
+        this.setState({selectedTab: tab});
+    }
+
     render() {
         return (
             <div>
-                <Sim />
-                <Result />
+                <NavBar selectTab={this.selectTab}/>
+                {this.state.selectedTab == NavBarTab.CustomSeason && <Sim />}
+                {this.state.selectedTab == NavBarTab.QueenStats && <div />}
                 <ToTop />
             </div>
         );

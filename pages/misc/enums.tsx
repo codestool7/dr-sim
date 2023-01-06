@@ -3,3 +3,8 @@ export enum GameStatus {
     CastScreen,
     MiniChallenge
 }
+
+export enum NavBarTab {
+    CustomSeason,
+    QueenStats
+}
