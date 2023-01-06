@@ -1,12 +1,12 @@
 import React from 'react';
-import Queen from '../classes/Queen';
-import BigText from './lilbabies/BigText';
-import Button from './lilbabies/Button';
-import NormalText from './lilbabies/NormalText';
-import QueenCard from './lilbabies/QueenCard';
-import { addQueenToArray, addQueenToArrayAndSort, pickRandomlyFromArray, removeQueenFromArray } from '../utils/utils';
-import Season from '../classes/Season';
-import Header from './lilbabies/Header';
+import Queen from '../../classes/Queen';
+import BigText from '../lilbabies/BigText';
+import Button from '../lilbabies/Button';
+import NormalText from '../lilbabies/NormalText';
+import QueenCard from '../lilbabies/QueenCard';
+import { addQueenToArray, addQueenToArrayAndSort, pickRandomlyFromArray, removeQueenFromArray } from '../../utils/utils';
+import Season from '../../classes/Season';
+import Header from '../lilbabies/Header';
 
 type CastPickerProps = {
     queens: Array<Queen>,

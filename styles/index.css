@@ -31,6 +31,12 @@
     cursor: pointer;
 }
 
+/* for stats table header */
+
+th {
+    cursor: pointer;
+}
+
 
 
 /* existing styles: */

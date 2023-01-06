@@ -1,6 +1,6 @@
 import React from 'react';
 import collection from 'lodash/collection';
-import CastPicker from "./CastPicker";
+import CastPicker from "./gamesteps/CastPicker";
 import { pickRandomlyFromArray, pickBallTheme, randomNumber, randomNumberWithMin } from "../utils/utils";
 //import { Scene, MiniChallenge, ActingChallenge, ComedyChallenge, MarketingChallenge, DanceChallenge, DesignChallenge, RunwayChallenge, ImprovChallenge, SnatchGame, Rusical, Ball, Rumix, GirlGroup, TalentShow } from "./classes";
 import {queensReads, whoWhyCompetition, whoWhyRelation, lipsyncsEventsBad, lipsyncsEventsGood, miniChallengeDescriptions1, miniChallengeDescriptions2, actingChallengeDescriptions1, actingChallengeDescriptions2, comedyChallengeDescriptions1, comedyChallengeDescriptions2, marketingDescriptions1, marketingDescriptions2, danceDescriptions, designDescriptions, makeoverOptions, runwayDescriptions, improvDescriptions, rusicalDescriptions, themedBallDescriptions, ballDescriptions1, ballDescriptions2, ballDescriptions3, rumixDescriptions, girlGroupDescriptions, talentOptions, reasoningQueens, twoQueensRelation1, twoQueensRelation2, twoQueensRelation3, twoQueensRelation3_2, twoQueensRelation4, twoQueensRelation4_2, twoQueensRelation5, threeQueensRelation1, threeQueensRelation2, threeQueensRelation3, threeQueensRelation4, fourQueensRelation1, fourQueensRelation2, fourQueensRelation3, fourQueensRelation4, multipleQueensRelation} from "../misc/constants";
@@ -8,24 +8,26 @@ import Queen from '../classes/Queen';
 import Season from '../classes/Season';
 import fetchData from '../utils/fetchData';
 import { GameStatus } from '../misc/enums';
-import FullCast from './FullCast';
-import SeasonProgress from './SeasonProgress';
+import FullCast from './gamesteps/FullCast';
+import SeasonProgress from './gamesteps/SeasonProgress';
 import Button from './lilbabies/Button';
+
+type SimProps = {
+    queens: Array<Queen>
+}
 
 type SimState = {
     allQueens: Array<Queen>,
-    allSeasons: Array<Season>,
     currentSeason: Season | null,
     gameStatus: GameStatus,
     elapsedEpisodes: number
     //gameOptions: null
 }
 
-export default class Sim extends React.Component<{}, SimState> {
-    constructor(props: {}) {
+export default class Sim extends React.Component<SimProps, SimState> {
+    constructor(props: SimProps) {
         super(props);
-        let data = fetchData();
-        this.state = {allQueens: data.queens, allSeasons: data.seasons, currentSeason: null, gameStatus: GameStatus.NotStarted, elapsedEpisodes: 0};
+        this.state = {allQueens: props.queens, currentSeason: null, gameStatus: GameStatus.NotStarted, elapsedEpisodes: 0};
     }
 
     startSeason = (season: Season) => {

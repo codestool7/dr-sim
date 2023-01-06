@@ -1,8 +1,8 @@
 import React from 'react';
-import Season from '../classes/Season';
-import BoldText from './lilbabies/BoldText';
-import Header from './lilbabies/Header';
-import QueenPic from './lilbabies/QueenPic';
+import Season from '../../classes/Season';
+import BoldText from '../lilbabies/BoldText';
+import Header from '../lilbabies/Header';
+import QueenPic from '../lilbabies/QueenPic';
 
 type FullCastProps = {
     season: Season | null

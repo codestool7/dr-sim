@@ -1,7 +1,7 @@
 import array from 'lodash/array';
 import Queen from "../classes/Queen";
 import Season from "../classes/Season";
-import { sortQueens } from './utils';
+import { sortQueensByName } from './utils';
 
 type data = {
     queens: Array<Queen>,
@@ -585,7 +585,7 @@ export default function fetchData(): data {
     let allSeasons: Array<Season> = [us_1, us_2, us_3, us_4, us_5, us_6, us_7, us_8, us_9, us_10, us_11, us_12, us_13, us_14, us_15, uk_1, uk_2, uk_3, uk_4, canada_1, canada_2, canada_3, holland_1, holland_2, thailand_1, thailand_2, downunder_1, downunder_2, espana_1, espana_2, italia_1, italia_2, france_1, philippines_1, allstars_1, allstars_2, allstars_3, allstars_4, allstars_5, allstars_6, allstars_7, ukvstw, canadavstw];
 
     allQueens = array.uniq(allQueens);
-    allQueens = sortQueens(allQueens);
+    allQueens = sortQueensByName(allQueens);
     return { queens: allQueens, seasons: allSeasons };
 
     // commenting out custom shit for now

@@ -308,7 +308,7 @@ export const whoWhyRelation = [
     "of their lack of growth",
     "they doesn't think they are a star",
     "of their lack of growth, polish, and refusal to listen to the judges critiques throughout the competition",
-    "their are lacking kindness to be a winner",
+    "they are lacking kindness to be a winner",
     "their drag is not in the same level as the other queens",
     "of their lack of versatility",
     "they can't understand their words as they speak Spanish",

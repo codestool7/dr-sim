@@ -1,6 +1,6 @@
 import React from 'react';
-import Season from '../classes/Season';
-import Header from './lilbabies/Header';
+import Season from '../../classes/Season';
+import Header from '../lilbabies/Header';
 
 type SeasonProgressProps = {
     season: Season | null

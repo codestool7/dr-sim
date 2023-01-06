@@ -29,7 +29,7 @@ export function randomNumberWithMin(min: number, max: number): number {
 }
 
 // sorts queen array alphabetically by name and returns
-export function sortQueens(queens: Array<Queen>) {
+export function sortQueensByName(queens: Array<Queen>) {
     return queens.sort((a, b) => a.getName().toLocaleLowerCase().localeCompare(b.getName().toLocaleLowerCase()));
 }
 
@@ -45,7 +45,7 @@ export function addQueenToArray(queens: Array<Queen>, queen: Queen) {
 
 // adds queen to array, sorts alphabetically, returns
 export function addQueenToArrayAndSort(queens: Array<Queen>, queen: Queen) {
-    return sortQueens(addQueenToArray(queens, queen));
+    return sortQueensByName(addQueenToArray(queens, queen));
 }
 
 // removes queen by object and returns new array

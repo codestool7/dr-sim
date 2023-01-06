@@ -1,4 +1,4 @@
-import { sortQueens } from "../utils/utils";
+import { sortQueensByName } from "../utils/utils";
 import Queen from "./Queen";
 
 export default class Season {
@@ -9,7 +9,7 @@ export default class Season {
 
     constructor(name: string, queens: Array<Queen>) {
         this.name = name;
-        this.queens = sortQueens(queens);
+        this.queens = sortQueensByName(queens);
         this.initializeAllRelations();
     }
 
