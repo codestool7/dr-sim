@@ -43,6 +43,7 @@ export default class Queen {
     improvStat: number;
     runwayStat: number;
     lipsyncStat: number;
+    totalStat: number;
     image: string;
     custom: boolean;
     sisters: Array<Relationship>;
@@ -56,6 +57,7 @@ export default class Queen {
         this.improvStat = improv;
         this.runwayStat = runway;
         this.lipsyncStat = lipsync;
+        this.totalStat = acting + comedy + dance + design + improv + runway + lipsync;
         this.custom = custom;
         if (image == "noimage") {
             this.image = "image/noimage.jpg";
@@ -177,6 +179,10 @@ export default class Queen {
         return this.lipsyncStat;
     }
 
+    getTotalStat() {
+        return this.totalStat;
+    }
+
     getImage() {
         return this.image;
     }
@@ -184,6 +190,7 @@ export default class Queen {
     isCustom() {
         return this.custom;
     }
+
     /*
     getFinaleScore() {
         this.finaleScore = this.favoritism - this.unfavoritism;

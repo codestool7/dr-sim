@@ -1,6 +1,6 @@
 import React from 'react';
 import Queen from '../classes/Queen';
-import { sortQueensByName } from '../utils/utils';
+import { sortQueensByAttribute, sortQueensByAttributeReverse, sortQueensByName, sortQueensByNameReverse } from '../utils/utils';
 import Header from './lilbabies/Header';
 import QueenStatRow from './lilbabies/QueenStatRow';
 
@@ -34,17 +34,13 @@ export default class QueenStats extends React.Component<QueenStatsProps, QueenSt
             if (sortDesc) {
                 queens = sortQueensByName(queens);
             } else {
-                // sort opposite way
+                queens = sortQueensByNameReverse(queens);
             }
         } else {
             if (sortDesc) {
-                queens = queens.sort((function(a, b){
-                    return b[sortBy] - a[sortBy]}
-                ));
+                queens = sortQueensByAttribute(queens, sortBy);
             } else {
-                queens = queens.sort((function(a, b){
-                    return a[sortBy] - b[sortBy]}
-                ));
+                queens = sortQueensByAttributeReverse(queens, sortBy);
             }
         }
         this.setState({queens: queens, sortBy: sortBy, sortDesc: sortDesc});
@@ -67,6 +63,7 @@ export default class QueenStats extends React.Component<QueenStatsProps, QueenSt
                             <th onClick={() => this.sortQueens("improvStat")}>Improv</th>
                             <th onClick={() => this.sortQueens("runwayStat")}>Runway</th>
                             <th onClick={() => this.sortQueens("lipsyncStat")}>Lipsync</th>
+                            <th onClick={() => this.sortQueens("totalStat")}>Total</th>
                         </tr>
                     </thead>
                     <tbody>

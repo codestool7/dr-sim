@@ -33,6 +33,18 @@ export function sortQueensByName(queens: Array<Queen>) {
     return queens.sort((a, b) => a.getName().toLocaleLowerCase().localeCompare(b.getName().toLocaleLowerCase()));
 }
 
+export function sortQueensByNameReverse(queens: Array<Queen>) {
+    return queens.sort((a, b) => b.getName().toLocaleLowerCase().localeCompare(a.getName().toLocaleLowerCase()));
+}
+
+export function sortQueensByAttribute(queens: Array<Queen>, attribute: string) {
+    return queens.sort((function(a, b){return b[attribute] - a[attribute]}));
+}
+
+export function sortQueensByAttributeReverse(queens: Array<Queen>, attribute: string) {
+    return queens.sort((function(a, b){return a[attribute] - b[attribute]}));
+}
+
 // adds queen to array and returns new array
 export function addQueenToArray(queens: Array<Queen>, queen: Queen) {
     let beforeLength = queens.length

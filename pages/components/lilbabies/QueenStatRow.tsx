@@ -15,6 +15,7 @@ export default function QueenStatRow(props: QueenStatRowProps) {
             <td>{props.queen.getImprovStat()}</td>
             <td>{props.queen.getRunwayStat()}</td>
             <td>{props.queen.getLipSyncStat()}</td>
+            <td>{props.queen.getTotalStat()}</td>
         </tr>
     );
 }
