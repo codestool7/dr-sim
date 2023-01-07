@@ -30,6 +30,7 @@ export default class App extends React.Component<{}, AppState> {
             <div>
                 <NavBar selectTab={this.selectTab}/>
                 {this.state.selectedTab == NavBarTab.CustomSeason && <Sim queens={this.state.queens}/>}
+                {this.state.selectedTab == NavBarTab.PredefSeason && <Sim queens={this.state.queens} seasons={this.state.seasons}/>}
                 {this.state.selectedTab == NavBarTab.QueenStats && <QueenStats queens={this.state.queens}/>}
                 <ToTop />
             </div>

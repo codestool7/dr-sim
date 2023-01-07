@@ -4,12 +4,6 @@
 
 /* codester's added styles: */
 
-/* just took the inline shit applied to every queen picture and moved it here */
-.queenImage {
-    width: 105px;
-    height: 105px;
-}
-
 /* stolen from val's sim for navbar */
 .navbar {
     background-color: darkgray;

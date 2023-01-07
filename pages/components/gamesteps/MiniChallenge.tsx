@@ -1,4 +1,26 @@
-export {};
+import React from 'react';
+import Season from '../../classes/Season';
+import Header from '../lilbabies/Header';
+
+type MiniChallengeProps = {
+    season: Season | null
+}
+
+export default class MiniChallenge extends React.Component<MiniChallengeProps, {}> {
+    render() {
+        return <div>
+            <Header
+                text="Mini Challenge!"
+            />
+            {this.props.season &&
+                <div className="mainPart" id="MainBlock">
+                    
+                </div>
+            }
+        </div>;
+    }
+}
+
 
 /* function miniChallenge() {
     for (let i = 0; i < currentCast.length; i++) {

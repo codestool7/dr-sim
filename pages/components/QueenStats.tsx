@@ -68,7 +68,7 @@ export default class QueenStats extends React.Component<QueenStatsProps, QueenSt
                     </thead>
                     <tbody>
                         {this.state.queens.map(queen => (
-                            <QueenStatRow queen={queen} key={queen.getName()}/>
+                            <QueenStatRow queen={queen} key={queen.getName() + ' stat row'}/>
                         ))}
                     </tbody>
                 </table>

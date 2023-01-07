@@ -1,10 +1,12 @@
 export enum GameStatus {
     NotStarted,
     CastScreen,
-    MiniChallenge
+    MiniChallenge,
+    MaxiChallenge
 }
 
 export enum NavBarTab {
     CustomSeason,
+    PredefSeason,
     QueenStats
 }

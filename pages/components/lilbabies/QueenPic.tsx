@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Queen from "../../classes/Queen";
 
 type QueenPicProps = {
@@ -11,7 +12,7 @@ export default function QueenPic(props: QueenPicProps) {
     };
 
     return (
-        <img src={props.queen.getImage()} className="queenImage" /*style={picStyle}*/></img> // "border-color" doesn't work while not in quotes but won't let me put it in quotes either idk
+        <Image src={props.queen.getImage()} alt={props.queen.getName()} width={105} height={105} /*style={picStyle}*//> // "border-color" doesn't work while not in quotes but won't let me put it in quotes either idk
     );
 }
 

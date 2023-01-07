@@ -22,7 +22,7 @@ export default function fetchData(): data {
     const tammie = new Queen("Tammie Brown", 6, 7, 5, 7, 6, 7, 6, "Tammie");
     const victoria = new Queen("Victoria 'Porkchop' Parker", 3, 6, 4, 3, 6, 5, 4, "Victoria");
     const us_1_queens = [akashia, bebe, jade, ninaf, ongina, rebecca, shannel, tammie, victoria];
-    const us_1 = new Season("us_1", us_1_queens);
+    const us_1 = new Season("US Season 1", us_1_queens);
 
     // US 2
     const jessica = new Queen("Jessica Wild", 8, 6, 9, 7, 8, 8, 10, "Jessica");
@@ -38,7 +38,7 @@ export default function fetchData(): data {
     const tatianna = new Queen("Tatianna", 8, 11, 8, 8, 10, 8, 10, "Tatianna");
     const tyra = new Queen("King Tyra", 11, 7, 8, 11, 8, 9, 10, "Tyra");
     const us_2_queens = [jessica, jujubee, morgan, mystique, nicole, pandora, raven, sahara, shangela, sonique, tatianna, tyra];
-    const us_2 = new Season("us_2", us_2_queens);
+    const us_2 = new Season("US Season 2", us_2_queens);
 
     // US 3
     const alexis = new Queen("Alexis Mateo", 14, 12, 9, 7, 10, 8, 12, "Alexis");
@@ -54,7 +54,7 @@ export default function fetchData(): data {
     const venus = new Queen("Venus D-Lite", 4, 5, 8, 2, 3, 5, 2, "Venus");
     const yara = new Queen("Yara Sofia", 11, 9, 9, 13, 7, 10, 8, "Yara");
     const us_3_queens = [alexis, carmen, delta, india, manila, mariah, mimi, phoenix, raja, shangela, stacey, venus, yara];
-    const us_3 = new Season("us_3", us_3_queens);
+    const us_3 = new Season("US Season 3", us_3_queens);
     
     // US 4
     const alisa = new Queen("Alisa Summers", 4, 4, 5, 2, 3, 5, 4, "Alisa");
@@ -70,7 +70,7 @@ export default function fetchData(): data {
     const princess = new Queen("The Princess", 4, 4, 5, 7, 4, 7, 7, "Princess");
     const willam = new Queen("Willam", 10, 8, 7, 10, 10, 9, 8, "Willam");
     const us_4_queens = [alisa, chad, dida, jiggly, kenya, leshauwn, latrice, madame, milan, phiphi, princess, willam];
-    const us_4 = new Season("us_4", us_4_queens);
+    const us_4 = new Season("US Season 4", us_4_queens);
     
     // US 5
     const alaska = new Queen("Alaska", 15, 14, 7, 8, 14, 10, 11, "Alaska");
@@ -88,7 +88,7 @@ export default function fetchData(): data {
     const serena = new Queen("Serena ChaCha", 3, 3, 7, 4, 5, 5, 8, "Serena");
     const vivienne = new Queen("Vivienne Pinay", 7, 3, 4, 5, 3, 6, 4, "Vivienne");
     const us_5_queens = [alaska, alyssa, coco, detox, honey, ivy, jadejolie, jinkx, lineysha, monica, penny, roxxxy, serena, vivienne];
-    const us_5 = new Season("us_5", us_5_queens);
+    const us_5 = new Season("US Season 5", us_5_queens);
 
     // US 6
     const adore = new Queen("Adore Delano", 9, 11, 9, 6, 9, 8, 11, "Adore");
@@ -106,7 +106,7 @@ export default function fetchData(): data {
     const trinityk = new Queen("Trinity K. Bonet", 9, 9, 13, 12, 4, 10, 15, "TrinityKB");
     const vivacious = new Queen("Vivacious", 4, 5, 5, 4, 4, 7, 7, "Vivacious");
     const us_6_queens = [adore, april, bendelacreme, bianca, courtney, darienne, gia, joslyn, kelly, laganja, magnolia, milk, trinityk, vivacious];
-    const us_6 = new Season("us_6", us_6_queens);
+    const us_6 = new Season("US Season 6", us_6_queens);
 
     // US 7
     const ginger = new Queen("Ginger Minj", 14, 12, 8, 9, 15, 7, 12, "Ginger");
@@ -124,7 +124,7 @@ export default function fetchData(): data {
     const trixie = new Queen("Trixie Mattel", 13, 10, 6, 10, 11, 10, 5, "Trixie");
     const violet = new Queen("Violet Chachki", 6, 7, 8, 15, 8, 13, 8, "Violet");
     const us_7_queens = [ginger, jaidynn, jasmine, kandy, katya, kennedy, max, fame, kasha, pearl, sashab, tempest, trixie, violet];
-    const us_7 = new Season("us_7", us_7_queens);
+    const us_7 = new Season("US Season 7", us_7_queens);
 
     // US 8
     const acid = new Queen("Acid Betty", 9, 4, 7, 10, 5, 11, 7, "Acid");
@@ -140,7 +140,7 @@ export default function fetchData(): data {
     const robbie = new Queen("Robbie Turner", 4, 5, 6, 4, 3, 6, 6, "Robbie");
     const thorgy = new Queen("Thorgy Thor", 14, 9, 6, 9, 13, 9, 8, "Thorgy");
     const us_8_queens = [acid, bob, chichi, cynthia, dax, derrick, kim, laila, naomi, naysha, robbie, thorgy];
-    const us_8 = new Season("us_8", us_8_queens);
+    const us_8 = new Season("US Season 8", us_8_queens);
 
     // US 9
     const aja = new Queen("Aja LaBeija", 4, 8, 12, 11, 9, 10, 11, "Aja");
@@ -157,7 +157,7 @@ export default function fetchData(): data {
     const trinity = new Queen("Trinity The Tuck", 13, 11, 9, 15, 10, 13, 11, "TrinityTT");
     const valentina = new Queen("Valentina", 11, 7, 10, 9, 9, 9, 10, "Valentina");
     const us_9_queens = [aja, alexism, charlie, cynthia, eureka, farrah, jaymes, kimora, ninab, peppermint, sasha, shea, trinity, valentina];
-    const us_9 = new Season("us_9", us_9_queens);
+    const us_9 = new Season("US Season 9", us_9_queens);
 
     // US 10
     const aquaria = new Queen("Aquaria", 6, 11, 8, 15, 12, 14, 11, "Aquaria");
@@ -174,7 +174,7 @@ export default function fetchData(): data {
     const vixen = new Queen("The Vixen", 5, 4, 12, 9, 3, 8, 12, "Vixen");
     const yuhua = new Queen("Yuhua Hamasaki", 4, 4, 6, 9, 6, 7, 7, "Yuhua");
     const us_10_queens = [aquaria, asia, blair, dusty, eureka, kalorie, kameron, mayhem, miz, monet, monique, vanessa, vixen, yuhua];
-    const us_10 = new Season("us_10", us_10_queens);
+    const us_10 = new Season("US Season 10", us_10_queens);
 
     // US 11
     const akeria = new Queen("A'keria C. Davenport", 11, 9, 11, 8, 10, 13, 10, "Akeria");
@@ -191,7 +191,7 @@ export default function fetchData(): data {
     const silky = new Queen("Silky Nutmeg Ganache", 10, 10, 9, 8, 10, 10, 12, "Silky");
     const yvie = new Queen("Yvie Oddly", 12, 7, 13, 12, 9, 12, 15, "Yvie");
     const us_11_queens = [akeria, ariel, brooke, honeyd, kahanna, mercedes, ninaw, plastique, rajah, scarlet, shuga, silky, vanessa, yvie];
-    const us_11 = new Season("us_11", us_11_queens);
+    const us_11 = new Season("US Season 11", us_11_queens);
 
     // US 12
     const aiden = new Queen("Aiden Zhane", 9, 3, 6, 4, 3, 6, 6, "Aiden");
@@ -207,7 +207,7 @@ export default function fetchData(): data {
     const rock = new Queen("Rock M. Sakura", 6, 6, 6, 4, 8, 8, 7, "Rock");
     const widow = new Queen("Widow Von'Du", 11, 7, 13, 8, 11, 10, 15, "Widow");
     const us_12_queens = [aiden, brita, crystal, dahlia, gigi, heidi, jackie, jaida, jan, nicky, rock, widow];
-    const us_12 = new Season("us_12", us_12_queens);
+    const us_12 = new Season("US Season 12", us_12_queens);
 
     // US 13
     const denali = new Queen("Denali", 4, 8, 14, 9, 10, 11, 13, "Denali");
@@ -224,7 +224,7 @@ export default function fetchData(): data {
     const tina = new Queen("Tina Burner", 6, 6, 10, 5, 6, 8, 9, "TinaB");
     const utica = new Queen("Utica Queen", 7, 4, 6, 15, 5, 12, 11, "Utica");
     const us_13_queens = [denali, elliott, mik, joey, kahmora, kandym, lala, olivia, rose, symone, tamisha, tina, utica];
-    const us_13 = new Season("us_13", us_13_queens);
+    const us_13 = new Season("US Season 13", us_13_queens);
 
     // US 14
     const alyssaH = new Queen("Alyssa Hunter", 5, 6, 7, 10, 7, 13, 8, "AlyssaH");
@@ -242,7 +242,7 @@ export default function fetchData(): data {
     const orion = new Queen("Orion Story", 4, 6, 6, 5, 6, 6, 5, "Orion");
     const willow = new Queen("Willow Pill", 11, 8, 7, 10, 10, 12, 8, "Willow");
     const us_14_queens = [alyssaH, angeria, bosco, daya, deja, jasmineK, jorgeous, june, kerri, kornbread, cadmen, maddy, orion, willow];
-    const us_14 = new Season("us_14", us_14_queens);
+    const us_14 = new Season("US Season 14", us_14_queens);
 
     // US 15
     const amethyst = new Queen("Amethyst", 7, 7, 7, 7, 7, 7, 7, "Amethyst");
@@ -262,7 +262,7 @@ export default function fetchData(): data {
     const spice = new Queen("Spice", 7, 7, 7, 7, 7, 7, 7, "Spice");
     const sugar = new Queen("Sugar", 7, 7, 7, 7, 7, 7, 7, "Sugar");
     const us_15_queens = [amethyst, anetra, auraMayari, irene, jax, loosey, luxx, malaysia, marcia, mistress, poppy, robin, salina, sashaColby, spice, sugar];
-    const us_15 = new Season("us_15", us_15_queens);
+    const us_15 = new Season("US Season 15", us_15_queens);
     
     // UK 1
     const baga = new Queen("Baga Chipz", 13, 12, 5, 5, 13, 8, 7, "Baga");
@@ -276,7 +276,7 @@ export default function fetchData(): data {
     const viv = new Queen("The Vivienne", 12, 13, 8, 10, 14, 11, 12, "TVivienne");
     const vinegar = new Queen("Vinegar Strokes", 7, 6, 6, 4, 4, 6, 6, "Vinegar");
     const uk_1_queens = [baga, blu, cheryl, crystaluk, divina, gothy, scaredy, sumting, viv, vinegar];
-    const uk_1 = new Season("uk_1", uk_1_queens);
+    const uk_1 = new Season("UK Season 1", uk_1_queens);
     
     // UK 2
     const awhora = new Queen("A'Whora", 7, 5, 8, 15, 10, 10, 8, "Awhora");
@@ -292,7 +292,7 @@ export default function fetchData(): data {
     const tia = new Queen("Tia Kofi", 7, 9, 9, 5, 8, 5, 10, "Tia");
     const veronica = new Queen("Veronica Green", 6, 6, 10, 6, 5, 7, 8, "Veronica");
     const uk_2_queens = [awhora, asttina, bimini, cherry, ellie, ginny, joe, lawrence, sister, tayce, tia, veronica];
-    const uk_2 = new Season("uk_2", uk_2_queens);
+    const uk_2 = new Season("UK Season 2", uk_2_queens);
 
     // UK 3
     const anubis = new Queen("Anubis", 5, 5, 5, 4, 5, 4, 4, "Anubis");
@@ -307,7 +307,7 @@ export default function fetchData(): data {
     const vanity = new Queen("Vanity Milan", 8, 6, 12, 7, 8, 8, 12, "Vanity");
     const victoriaS = new Queen("Victoria Scone", 11, 10, 8, 10, 8, 10, 10, "VictoriaS");
     const uk_3_queens = [anubis, charity, choriza, elektraF, ella, kitty, krystal, river, scarlett, vanity, victoriaS, veronica];
-    const uk_3 = new Season("uk_3", uk_3_queens);
+    const uk_3 = new Season("UK Season 3", uk_3_queens);
 
     // UK 4
     const baby = new Queen("Baby", 6, 6, 9, 10, 4, 9, 11, "Baby");
@@ -323,7 +323,7 @@ export default function fetchData(): data {
     const sminty = new Queen("Sminty Drop", 5, 6, 5, 9, 4, 14, 8, "Sminty");
     const starlet = new Queen("Starlet", 4, 4, 4, 4, 4, 13, 5, "Starlet");
     const uk_4_queens = [baby, black, cheddar, copper, dakota, danny, jonbers, just, leFil, pixie, sminty, starlet];
-    const uk_4 = new Season("uk_4", uk_4_queens);
+    const uk_4 = new Season("UK Season 4", uk_4_queens);
 
     // CANADA 1 
     const anastarzia = new Queen("Anastarzia Anaquway", 7, 6, 4, 12, 6, 8, 7, "Starzy");
@@ -339,7 +339,7 @@ export default function fetchData(): data {
     const bobo = new Queen("Scarlett BoBo", 6, 8, 9, 9, 9, 10, 9, "Scarlett");
     const tynomi = new Queen("Tynomi Banks", 5, 6, 5, 7, 5, 7, 10, "Tynomi");
     const canada_1_queens = [anastarzia, boa, ilona, jimbo, juice, kiara, kyne, lemon, priyanka, rita, bobo, tynomi];
-    const canada_1 = new Season("canada_1", canada_1_queens);
+    const canada_1 = new Season("Canada Season 1", canada_1_queens);
     
     // CANADA 2
     const adriana = new Queen("Adriana", 9, 6, 7, 6, 6, 8, 5, "Adriana");
@@ -355,7 +355,7 @@ export default function fetchData(): data {
     const suki = new Queen("Suki Doll", 8, 7, 6, 9, 5, 9, 5, "Suki");
     const synthia = new Queen("Synthia Kiss", 6, 8, 10, 7, 9, 7, 9, "Synthia");
     const canada_2_queens = [adriana, beth, eve, giametric, icesis, kendall, kimoraA, oceane, pythia, stephanie, suki, synthia];
-    const canada_2 = new Season("canada_2", canada_2_queens);
+    const canada_2 = new Season("Canada Season 2", canada_2_queens);
 
     // CANADA 3
     const bombae = new Queen("Bombae", 5, 7, 6, 8, 6, 7, 7, "Bombae");
@@ -371,7 +371,7 @@ export default function fetchData(): data {
     const moco = new Queen("Miss Moço", 5, 4, 6, 4, 4, 7, 9, "Moco");
     const vanderpuss = new Queen("Vivian Vanderpuss", 9, 9, 9, 7, 8, 9, 8, "Vanderpuss");
     const canada_3_queens = [bombae, chelazon, gisele, halal, irma, jadashada, kaos, kimmy, boomboom, fiercalicious, moco, vanderpuss];
-    const canada_3 = new Season("canada_3", canada_3_queens);
+    const canada_3 = new Season("Canada Season 3", canada_3_queens);
 
     // HOLLAND 1
     const chelsea = new Queen("Chelsea Boy", 9, 10, 7, 7, 10, 12, 6, "Chelsea");
@@ -385,7 +385,7 @@ export default function fetchData(): data {
     const roem = new Queen("Roem", 6, 6, 5, 5, 5, 6, 5, "Roem");
     const sederginne = new Queen("Sederginne", 7, 6, 6, 7, 5, 13, 5, "Sederginne");
     const holland_1_queens = [chelsea, envy, janey, madamem, mama, megan, abby, patty, roem, sederginne];
-    const holland_1 = new Season("holland_1", holland_1_queens);
+    const holland_1 = new Season("Holland Season 1", holland_1_queens);
     
     // HOLLAND 2
     const ivyelise = new Queen("Ivy-Elyse", 6, 8, 5, 4, 8, 5, 10, "IvyE");
@@ -399,7 +399,7 @@ export default function fetchData(): data {
     const vanessaC = new Queen("Vanessa Van Cartier", 7, 5, 6, 8, 5, 12, 8, "VanessaC");
     const vivaldi = new Queen("Vivaldi", 8, 8, 8, 7, 8, 12, 8, "Vivaldi");
     const holland_2_queens = [ivyelise, juicy, keta, love, mlp, reggy, tabitha, countess, vanessaC, vivaldi];
-    const holland_2 = new Season("holland_2", holland_2_queens);
+    const holland_2 = new Season("Holland Season 2", holland_2_queens);
     
     // THAILAND 1
     const amadiva = new Queen("Amadiva", 7, 6, 7, 9, 4, 9, 8, "Amadiva");
@@ -413,7 +413,7 @@ export default function fetchData(): data {
     const natalia = new Queen("Natalia Pliacam", 8, 12, 7, 9, 12, 10, 9, "Natalia");
     const petchra = new Queen("Petchra", 6, 5, 6, 8, 6, 7, 8, "Petchra");
     const thailand_1_queens = [amadiva, annee, b, bunny, dearis, jaja, meannie, morrigan, natalia, petchra];
-    const thailand_1 = new Season("thailand_1", thailand_1_queens);
+    const thailand_1 = new Season("Thailand Season 1", thailand_1_queens);
     
     // THAILAND 2
     const angele = new Queen("Angele Anang", 8, 8, 9, 11, 9, 9, 12, "Angele");
@@ -431,7 +431,7 @@ export default function fetchData(): data {
     const tormai = new Queen("Tormai", 6, 5, 5, 6, 5, 7, 7, "Tormai");
     const vanda = new Queen("Vanda Miss Joaquim", 11, 10, 8, 8, 9, 9, 9, "Vanda");
     const thailand_2_queens = [angele, bandit, genie, kana, kandyz, katy, m, maya, mocha, gimhuay, silver, srimala, tormai, vanda];
-    const thailand_2 = new Season("thailand_2", thailand_2_queens);
+    const thailand_2 = new Season("Thailand Season 2", thailand_2_queens);
 
     // DOWN UNDER 1
     const anita = new Queen("Anita Wigl'it", 6, 9, 8, 6, 10, 8, 5, "Anita");
@@ -444,7 +444,7 @@ export default function fetchData(): data {
     const kita = new Queen("Kita Mean", 9, 9, 7, 7, 9, 9, 8, "Kita");
     const maxi = new Queen("Maxi Shield", 6, 6, 5, 9, 7, 8, 8, "Maxi");
     const downunder_1_queens = [anita, art, cocoj, elektra, etc, jojo, karen, kita, maxi];
-    const downunder_1 = new Season("downunder_1", downunder_1_queens);
+    const downunder_1 = new Season("Down Under Season 1", downunder_1_queens);
     
     // DOWN UNDER 2
     const aubrey = new Queen("Aubrey Haive", 5, 4, 5, 7, 4, 8, 7, "Aubrey");
@@ -458,7 +458,7 @@ export default function fetchData(): data {
     const spankie = new Queen("Spankie Jackzon", 11, 11, 8, 5, 8, 7, 9, "Spankie");
     const yuri = new Queen("Yuri Guaii", 6, 11, 6, 12, 9, 13, 7, "Yuri");
     const downunder_2_queens = [aubrey, beverly, faux, hannah, kweenKong, minnie, molly, pomara, spankie, yuri];
-    const downunder_2 = new Season("downunder_2", downunder_2_queens);
+    const downunder_2 = new Season("Down Under Season 2", downunder_2_queens);
     
     // ESPAÑA 1
     const arantxa = new Queen("Arantxa Castilla La Mancha", 6, 8, 6, 7, 8, 9, 7, "Arantxa");
@@ -472,7 +472,7 @@ export default function fetchData(): data {
     const sagittaria = new Queen("Sagittaria", 7, 8, 8, 9, 7, 10, 8, "Sagittaria");
     const macarena = new Queen("The Macarena", 5, 5, 6, 4, 5, 5, 5, "Macarena");
     const espana_1_queens = [arantxa, carmenf, dovima, drag, hugaceo, inti, killer, pupi, sagittaria, macarena];
-    const espana_1 = new Season("espana_1", espana_1_queens);
+    const espana_1 = new Season("España Season 1", espana_1_queens);
     
     // ESPAÑA 2
     const arielRec = new Queen("Ariel Rec", 5, 5, 7, 4, 5, 9, 5, "ArielRec");
@@ -488,7 +488,7 @@ export default function fetchData(): data {
     const sharonne = new Queen("Sharonne", 12, 10, 8, 8, 12, 10, 9, "Sharonne");
     const venedita = new Queen("Venedita Von Däsh", 9, 9, 9, 9, 9, 10, 9, "Venedita");
     const espana_2_queens = [arielRec, diamante, sethlas, estrella, jota, juriji, marina, marisa, onyx, samantha, sharonne, venedita];
-    const espana_2 = new Season("espana_2", espana_2_queens);
+    const espana_2 = new Season("España Season 2", espana_2_queens);
 
     // ITALIA 1
     const ava = new Queen("Ava Hangar", 8, 7, 5, 5, 6, 6, 6, "Ava");
@@ -500,7 +500,7 @@ export default function fetchData(): data {
     const riche = new Queen("Le Riche", 6, 8, 6, 8, 9, 8, 7, "Riche");
     const luquisha = new Queen("Luquisha Lubamba", 7, 6, 6, 5, 7, 6, 7, "Luquisha");
     const italia_1_queens = [ava, divinity, elecktra, enorma, farida, ivana, riche, luquisha];
-    const italia_1 = new Season("italia_1", italia_1_queens);
+    const italia_1 = new Season("Italia Season 1", italia_1_queens);
     
     // ITALIA 2
     const aura = new Queen("Aura Eternal", 11, 9, 9, 6, 5, 9, 8, "Aura");
@@ -514,7 +514,7 @@ export default function fetchData(): data {
     const skandalove = new Queen("Skandalove", 9, 7, 8, 8, 7, 9, 9, "Skandalove");
     const tanissa = new Queen("Tanissa Yoncè", 5, 6, 6, 10, 6, 9, 7, "Tanissa");
     const italia_2_queens = [aura, gioffre, diamond, petite, narciso, nehellenia, obama, panthera, skandalove, tanissa];
-    const italia_2 = new Season("italia_2", italia_2_queens);
+    const italia_2 = new Season("Italia Season 2", italia_2_queens);
 
     // FRANCE 1
     const elips = new Queen("Elips", 7, 9, 8, 8, 8, 8, 7, "Elips");
@@ -528,7 +528,7 @@ export default function fetchData(): data {
     const paloma = new Queen("Paloma", 11, 11, 6, 7, 9, 9, 8, "Paloma");
     const soa = new Queen("Soa de Muse", 9, 10, 10, 8, 8, 9, 10, "Soa");
     const france_1_queens = [elips, kam, bigbertha, briochee, grandedame, kahena, lolita, lova, paloma, soa];
-    const france_1 = new Season("france_1", france_1_queens);
+    const france_1 = new Season("France Season 1", france_1_queens);
     
     // PHILIPPINES 1
     const brigiding = new Queen("Brigiding", 6, 5, 8, 8, 4, 9, 10, "Brigiding");
@@ -544,42 +544,42 @@ export default function fetchData(): data {
     const vinas = new Queen("Viñas DeLuxe", 6, 8, 8, 10, 8, 11, 7, "VinasDeLuxe");
     const xilhouete = new Queen("Xilhouete", 6, 10, 6, 8, 11, 10, 8, "Xilhouete");
     const philippines_1_queens = [brigiding, corazon, eva, gigiEra, morgana, marinaSummers, minty, precious, prince, turing, vinas, xilhouete];
-    const philippines_1 = new Season("philippines_1", philippines_1_queens);
+    const philippines_1 = new Season("Philippines Season 1", philippines_1_queens);
 
     // ALL STARS 1
     const allstars_1_queens = [alexis, chad, jujubee, latrice, manila, mimi, ninaf, pandora, raven, shannel, tammie, yara];
-    const allstars_1 = new Season("allstars_1", allstars_1_queens);
+    const allstars_1 = new Season("All Stars Season 1", allstars_1_queens);
 
     // ALL STARS 2
     const allstars_2_queens = [adore, alaska, alyssa, coco, detox, ginger, katya, phiphi, roxxxy, tatianna];
-    const allstars_2 = new Season("allstars_2", allstars_2_queens);
+    const allstars_2 = new Season("All Stars Season 2", allstars_2_queens);
 
     // ALL STARS 3
     const allstars_3_queens = [aja, bebe, bendelacreme, chichi, kennedy, milk, morgan, shangela, thorgy, trixie];
-    const allstars_3 = new Season("allstars_3", allstars_3_queens);
+    const allstars_3 = new Season("All Stars Season 3", allstars_3_queens);
 
     // ALL STARS 4
     const allstars_4_queens = [farrah, gia, jasmine, latrice, manila, monet, monique, naomi, trinity, valentina];
-    const allstars_4 = new Season("allstars_4", allstars_4_queens);
+    const allstars_4 = new Season("All Stars Season 4", allstars_4_queens);
 
     // ALL STARS 5
     const allstars_5_queens = [alexis, blair, derrick, india, jujubee, mariah, mayhem, miz, ongina, shea];
-    const allstars_5 = new Season("allstars_5", allstars_5_queens);
+    const allstars_5 = new Season("All Stars Season 5", allstars_5_queens);
 
     // ALL STARS 6
     const allstars_6_queens = [akeria, eureka, ginger, jan, jiggly, pandora, rajah, scarlet, serena, silky, sonique, trinityk, yara];
-    const allstars_6 = new Season("allstars_6", allstars_6_queens);
+    const allstars_6 = new Season("All Stars Season 6", allstars_6_queens);
 
     // ALL STARS 7
     const allstars_7_queens = [raja, jinkx, yvie, jaida, trinity, monet, shea, viv];
-    const allstars_7 = new Season("allstars_7", allstars_7_queens);
+    const allstars_7 = new Season("All Stars Season 7", allstars_7_queens);
 
     // VS THE WORLD
     const pangina = new Queen("Pangina Heals", 9, 7, 14, 11, 8, 13, 14, "Pangina");
     const ukvstw_queens = [baga, blu, cheryl, janey, jimbo, jujubee, lemon, monique, pangina];
-    const ukvstw = new Season("ukvstw", ukvstw_queens);
+    const ukvstw = new Season("UK vs. The World", ukvstw_queens);
     const canadavstw_queens = [anita, icesis, kendall, rajah, rita, silky, stephanie, victoriaS, vanity];
-    const canadavstw = new Season("canadavstw", canadavstw_queens);
+    const canadavstw = new Season("Canada vs. The World", canadavstw_queens);
 
     let allQueens: Array<Queen> = array.concat([], us_1_queens, us_2_queens, us_3_queens, us_4_queens, us_5_queens, us_6_queens, us_7_queens, us_8_queens, us_9_queens, us_10_queens, us_11_queens, us_12_queens, us_13_queens, us_14_queens, us_15_queens, uk_1_queens, uk_2_queens, uk_3_queens, uk_4_queens, canada_1_queens, canada_2_queens, canada_3_queens, holland_1_queens, holland_2_queens, thailand_1_queens, thailand_2_queens, downunder_1_queens, downunder_2_queens, espana_1_queens, espana_2_queens, italia_1_queens, italia_2_queens, france_1_queens, philippines_1_queens, pangina);
     let allSeasons: Array<Season> = [us_1, us_2, us_3, us_4, us_5, us_6, us_7, us_8, us_9, us_10, us_11, us_12, us_13, us_14, us_15, uk_1, uk_2, uk_3, uk_4, canada_1, canada_2, canada_3, holland_1, holland_2, thailand_1, thailand_2, downunder_1, downunder_2, espana_1, espana_2, italia_1, italia_2, france_1, philippines_1, allstars_1, allstars_2, allstars_3, allstars_4, allstars_5, allstars_6, allstars_7, ukvstw, canadavstw];

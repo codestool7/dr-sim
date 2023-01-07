@@ -24,7 +24,7 @@ type CastPickerState = {
     searchValue: string
 }
 
-export default class ClassPicker extends React.Component<CastPickerProps, CastPickerState> {
+export default class CastPicker extends React.Component<CastPickerProps, CastPickerState> {
     constructor(props: CastPickerProps) {
         super(props);
         this.state = {searchableQueens: props.queens, showingQueens: [], selectedQueens: [], searchValue: ""};
@@ -125,7 +125,7 @@ export default class ClassPicker extends React.Component<CastPickerProps, CastPi
                 </div>
                 <div className="drag-cards">
                     {this.state.showingQueens.map(queen => (
-                        <QueenCard queen={queen} key={queen.getName()} onSelect={() => this.selectQueen(queen)}/>
+                        <QueenCard queen={queen} key={queen.getName() + ' showing card'} onSelect={() => this.selectQueen(queen)}/>
                     ))}
                 </div>
                 <hr />
@@ -134,7 +134,7 @@ export default class ClassPicker extends React.Component<CastPickerProps, CastPi
                         <BigText text={"Current Cast: " + this.state.selectedQueens.length} noBreak/>
                         <div className="drag-cards">
                         {this.state.selectedQueens.map(queen => (
-                            <QueenCard queen={queen} key={queen.getName()} onRemove={() => this.removeQueen(queen)}/>
+                            <QueenCard queen={queen} key={queen.getName() + ' selected card'} onRemove={() => this.removeQueen(queen)}/>
                         ))}
                         </div>
                     </div>

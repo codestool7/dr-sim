@@ -6,18 +6,20 @@ import { pickRandomlyFromArray, pickBallTheme, randomNumber, randomNumberWithMin
 import {queensReads, whoWhyCompetition, whoWhyRelation, lipsyncsEventsBad, lipsyncsEventsGood, miniChallengeDescriptions1, miniChallengeDescriptions2, actingChallengeDescriptions1, actingChallengeDescriptions2, comedyChallengeDescriptions1, comedyChallengeDescriptions2, marketingDescriptions1, marketingDescriptions2, danceDescriptions, designDescriptions, makeoverOptions, runwayDescriptions, improvDescriptions, rusicalDescriptions, themedBallDescriptions, ballDescriptions1, ballDescriptions2, ballDescriptions3, rumixDescriptions, girlGroupDescriptions, talentOptions, reasoningQueens, twoQueensRelation1, twoQueensRelation2, twoQueensRelation3, twoQueensRelation3_2, twoQueensRelation4, twoQueensRelation4_2, twoQueensRelation5, threeQueensRelation1, threeQueensRelation2, threeQueensRelation3, threeQueensRelation4, fourQueensRelation1, fourQueensRelation2, fourQueensRelation3, fourQueensRelation4, multipleQueensRelation} from "../misc/constants";
 import Queen from '../classes/Queen';
 import Season from '../classes/Season';
-import fetchData from '../utils/fetchData';
 import { GameStatus } from '../misc/enums';
 import FullCast from './gamesteps/FullCast';
 import SeasonProgress from './gamesteps/SeasonProgress';
 import Button from './lilbabies/Button';
+import MiniChallenge from './gamesteps/MiniChallenge';
+import MaxiChallenge from './gamesteps/MaxiChallenge';
+import SeasonPicker from './gamesteps/SeasonPicker';
 
 type SimProps = {
-    queens: Array<Queen>
+    queens: Array<Queen>,
+    seasons?: Array<Season>
 }
 
 type SimState = {
-    allQueens: Array<Queen>,
     currentSeason: Season | null,
     gameStatus: GameStatus,
     elapsedEpisodes: number
@@ -27,7 +29,7 @@ type SimState = {
 export default class Sim extends React.Component<SimProps, SimState> {
     constructor(props: SimProps) {
         super(props);
-        this.state = {allQueens: props.queens, currentSeason: null, gameStatus: GameStatus.NotStarted, elapsedEpisodes: 0};
+        this.state = {currentSeason: null, gameStatus: GameStatus.NotStarted, elapsedEpisodes: 0};
     }
 
     startSeason = (season: Season) => {
@@ -51,8 +53,11 @@ export default class Sim extends React.Component<SimProps, SimState> {
 
     render() {
         return <div>
-            {(this.state.gameStatus == GameStatus.NotStarted) &&
-                <CastPicker queens={this.state.allQueens} startSeason={this.startSeason}/>
+            {(this.state.gameStatus == GameStatus.NotStarted && !this.props.seasons) &&
+                <CastPicker queens={this.props.queens} startSeason={this.startSeason}/>
+            }
+            {(this.state.gameStatus == GameStatus.NotStarted && this.props.seasons) &&
+                <SeasonPicker seasons={this.props.seasons} startSeason={this.startSeason}/>
             }
             {(this.state.gameStatus == GameStatus.CastScreen && this.state.elapsedEpisodes == 0) &&
                 <FullCast season={this.state.currentSeason}/>
@@ -61,7 +66,10 @@ export default class Sim extends React.Component<SimProps, SimState> {
                 <SeasonProgress season={this.state.currentSeason}/>
             }
             {(this.state.gameStatus == GameStatus.MiniChallenge) &&
-                <div>mini time</div>
+                <MiniChallenge season={this.state.currentSeason}/>
+            }
+            {(this.state.gameStatus == GameStatus.MaxiChallenge) &&
+                <MaxiChallenge season={this.state.currentSeason}/>
             }
             {this.showProceed() &&
                 <Button text="Proceed" onClick={this.proceed}/>
@@ -86,8 +94,6 @@ export default class Sim extends React.Component<SimProps, SimState> {
 }
 
 /* 
-//mini-challenge stuff:
-
 //challenge modifiers:
 let actingChallengeCounter = 0;
 let comedyChallengeCounter = 0;
@@ -113,10 +119,6 @@ let team4 = [];
 let team5 = [];
 let isTeamChallenge = false;
 let isPairChallenge = false;
-
-
-//performance:
-
 
 function teamMaking() {
     let screen = new Scene();
