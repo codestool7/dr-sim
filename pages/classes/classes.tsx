@@ -1,56 +1,6 @@
-import { pickRandomlyFromArray, pickBallTheme, randomNumber, randomNumberWithMin } from "../utils/utils";
-import {queensReads, whoWhyCompetition, whoWhyRelation, lipsyncsEventsBad, lipsyncsEventsGood, miniChallengeDescriptions1, miniChallengeDescriptions2, actingChallengeDescriptions1, actingChallengeDescriptions2, comedyChallengeDescriptions1, comedyChallengeDescriptions2, marketingDescriptions1, marketingDescriptions2, danceDescriptions, designDescriptions, makeoverOptions, runwayDescriptions, improvDescriptions, rusicalDescriptions, themedBallDescriptions, ballDescriptions1, ballDescriptions2, ballDescriptions3, rumixDescriptions, girlGroupDescriptions, talentOptions, reasoningQueens, twoQueensRelation1, twoQueensRelation2, twoQueensRelation3, twoQueensRelation3_2, twoQueensRelation4, twoQueensRelation4_2, twoQueensRelation5, threeQueensRelation1, threeQueensRelation2, threeQueensRelation3, threeQueensRelation4, fourQueensRelation1, fourQueensRelation2, fourQueensRelation3, fourQueensRelation4, multipleQueensRelation} from "../misc/constants";
-/* 
-export class MiniChallenge {
-    generateDescription() {
-        let description = document.querySelector("b#Description");
-        //reading and puppet challenges:
-        if (totalCastSize >= 10 && currentCast.length == 7 && !all_stars && !lipsync_assassin && !all_winners && episodeCount > 3 && !readingCheck || currentCast.length == totalCastSize && (all_stars || lipsync_assassin) && !readingCheck || episodeCount == 1 && all_winners && !readingCheck) {
-            description.innerHTML = "The library is open! In today's mini-challenge, the queens will read each other!";
-            readingCheck = true;
-            readingChallenge();
-        }
-        else if (totalCastSize != 5 && currentCast.length == 5) {
-            description.innerHTML = "Bring in the puppets! The queens will parody each other using puppets!";
-        }
-        else {
-            description.innerHTML = "In today's mini-challenge, the queens will do " + pickRandomlyFromArray(miniChallengeDescriptions1) + " " + pickRandomlyFromArray(miniChallengeDescriptions2);
-        }
-    }
-    rankPerformances() {
-        let screen = new Scene();
-        if (team) {
-            let winner = pickRandomlyFromArray(currentCast);
-            screen.createImage(winner.QueenA.image, "royalblue");
-            screen.createImage(winner.QueenB.image, "royalblue");
-            screen.createBold(`${winner.getName()} won the mini-challenge!`);
-            winner.miniEpisode.push(episodeCount);
-            winner.QueenA.miniEpisode.push(episodeCount);
-            winner.QueenB.miniEpisode.push(episodeCount);
-        } else {
-            if (randomNumber(100) <= 90) {
-                let winner = pickRandomlyFromArray(currentCast);
-                screen.createImage(winner.image, "royalblue");
-                screen.createBold(`${winner.getName()} won the mini-challenge!`);
-                winner.miniEpisode.push(episodeCount);
-                winner.miniWinner = true;
-            }else {
-                let winner = pickRandomlyFromArray(currentCast);
-                let second;
-                do{
-                    second = pickRandomlyFromArray(currentCast);
-                } while (second == winner);
-                screen.createImage(winner.image, "royalblue");
-                screen.createImage(second.image, "royalblue");
-                screen.createBold(`${winner.getName()} and ${second.getName()} won the mini-challenge!`);
-                winner.miniEpisode.push(episodeCount);
-                second.miniEpisode.push(episodeCount);
-                winner.miniWinner = true;
-                second.miniWinner = true;
-            }
-        }
-    }
-}
+export {};
+
+/*
 
 export class ActingChallenge {
     generateDescription() {

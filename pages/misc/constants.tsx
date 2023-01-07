@@ -355,14 +355,14 @@ export const lipsyncsEventsGood = [
 ];
 
 export const miniChallengeDescriptions1 = [
-    "wigs with",
-    "a quiz about",
-    "nails with",
-    "a competition about",
-    "a song about",
-    "make-up tutorials with",
+    "do wigs with",
+    "do a quiz about",
+    "do nails with",
+    "do a competition about",
+    "do a song about",
+    "do make-up tutorials with",
     "make a quick look about",
-    "a photoshoot about"
+    "do a photoshoot about"
 ];
 
 export const miniChallengeDescriptions2 = [

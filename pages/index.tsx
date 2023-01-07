@@ -1,5 +1,5 @@
 import React from 'react';
-import Queen from './classes/Queen';
+import Queen from './classes/competitors/Queen';
 import Season from './classes/Season';
 import NavBar from './components/NavBar';
 import QueenStats from './components/QueenStats';
@@ -30,7 +30,7 @@ export default class App extends React.Component<{}, AppState> {
             <div>
                 <NavBar selectTab={this.selectTab}/>
                 {this.state.selectedTab == NavBarTab.CustomSeason && <Sim queens={this.state.queens}/>}
-                {this.state.selectedTab == NavBarTab.PredefSeason && <Sim queens={this.state.queens} seasons={this.state.seasons}/>}
+                {this.state.selectedTab == NavBarTab.PredefSeason && <Sim seasons={this.state.seasons}/>}
                 {this.state.selectedTab == NavBarTab.QueenStats && <QueenStats queens={this.state.queens}/>}
                 <ToTop />
             </div>

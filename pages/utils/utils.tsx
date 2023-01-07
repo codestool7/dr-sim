@@ -1,6 +1,6 @@
 import array from 'lodash/array';
 import lang from 'lodash/lang';
-import Queen from "../classes/Queen";
+import Queen from "../classes/competitors/Queen";
 
 type BallTheme = {
     name: string,
@@ -30,11 +30,11 @@ export function randomNumberWithMin(min: number, max: number): number {
 
 // sorts queen array alphabetically by name and returns
 export function sortQueensByName(queens: Array<Queen>) {
-    return queens.sort((a, b) => a.getName().toLocaleLowerCase().localeCompare(b.getName().toLocaleLowerCase()));
+    return queens.sort((a, b) => a.name.toLocaleLowerCase().localeCompare(b.name.toLocaleLowerCase()));
 }
 
 export function sortQueensByNameReverse(queens: Array<Queen>) {
-    return queens.sort((a, b) => b.getName().toLocaleLowerCase().localeCompare(a.getName().toLocaleLowerCase()));
+    return queens.sort((a, b) => b.name.toLocaleLowerCase().localeCompare(a.name.toLocaleLowerCase()));
 }
 
 export function sortQueensByAttribute(queens: Array<Queen>, attribute: string) {
@@ -50,7 +50,7 @@ export function addQueenToArray(queens: Array<Queen>, queen: Queen) {
     let beforeLength = queens.length
     queens.push(queen);
     if (queens.length != beforeLength + 1) {
-        throw new Error("failed to add queen " + queen.getName() + " to array")
+        throw new Error("failed to add queen " + queen.name + " to array")
     }
     return queens;
 }
@@ -66,10 +66,17 @@ export function removeQueenFromArray(queens: Array<Queen>, queen: Queen) {
         return lang.isEqual(q, queen);
     });
     if (!removed || removed.length < 1) {
-        throw new Error("failed to remove queen " + queen.getName() + " from array");
+        throw new Error("failed to remove queen " + queen.name + " from array");
     }
     if (removed.length > 1) {
-        throw new Error("somehow removed multiple queens named " + queen.getName() + " from array?? how did you do this bro");
+        throw new Error("somehow removed multiple queens named " + queen.name + " from array?? how did you do this bro");
     }
     return queens;
+}
+
+export function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
 }

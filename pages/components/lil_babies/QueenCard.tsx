@@ -1,4 +1,4 @@
-import Queen from "../../classes/Queen";
+import Queen from "../../classes/competitors/Queen";
 import Button from "./Button";
 import QueenPic from "./QueenPic";
 
@@ -17,7 +17,7 @@ export default function QueenCard(props: QueenCardProps) {
             <div>
                 <QueenPic queen={props.queen} color="black"/>
             </div>
-            <div>{props.queen.getName()}</div>
+            <div>{props.queen.name}</div>
             {props.onRemove && <Button text="X" onClick={props.onRemove} />}
         </div>
     );

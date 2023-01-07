@@ -1,22 +1,19 @@
 import React from 'react';
-import collection from 'lodash/collection';
-import CastPicker from "./gamesteps/CastPicker";
-import { pickRandomlyFromArray, pickBallTheme, randomNumber, randomNumberWithMin } from "../utils/utils";
-//import { Scene, MiniChallenge, ActingChallenge, ComedyChallenge, MarketingChallenge, DanceChallenge, DesignChallenge, RunwayChallenge, ImprovChallenge, SnatchGame, Rusical, Ball, Rumix, GirlGroup, TalentShow } from "./classes";
-import {queensReads, whoWhyCompetition, whoWhyRelation, lipsyncsEventsBad, lipsyncsEventsGood, miniChallengeDescriptions1, miniChallengeDescriptions2, actingChallengeDescriptions1, actingChallengeDescriptions2, comedyChallengeDescriptions1, comedyChallengeDescriptions2, marketingDescriptions1, marketingDescriptions2, danceDescriptions, designDescriptions, makeoverOptions, runwayDescriptions, improvDescriptions, rusicalDescriptions, themedBallDescriptions, ballDescriptions1, ballDescriptions2, ballDescriptions3, rumixDescriptions, girlGroupDescriptions, talentOptions, reasoningQueens, twoQueensRelation1, twoQueensRelation2, twoQueensRelation3, twoQueensRelation3_2, twoQueensRelation4, twoQueensRelation4_2, twoQueensRelation5, threeQueensRelation1, threeQueensRelation2, threeQueensRelation3, threeQueensRelation4, fourQueensRelation1, fourQueensRelation2, fourQueensRelation3, fourQueensRelation4, multipleQueensRelation} from "../misc/constants";
-import Queen from '../classes/Queen';
+import CastPicker from "./game_steps/CastPicker";
+import { scrollToTop } from "../utils/utils";
+import Queen from '../classes/competitors/Queen';
 import Season from '../classes/Season';
 import { GameStatus } from '../misc/enums';
-import FullCast from './gamesteps/FullCast';
-import SeasonProgress from './gamesteps/SeasonProgress';
-import Button from './lilbabies/Button';
-import MiniChallenge from './gamesteps/MiniChallenge';
-import MaxiChallenge from './gamesteps/MaxiChallenge';
-import SeasonPicker from './gamesteps/SeasonPicker';
+import FullCast from './game_steps/FullCast';
+import SeasonProgress from './game_steps/SeasonProgress';
+import Button from './lil_babies/Button';
+import MiniChallenge from './game_steps/MiniChallenge';
+import MaxiChallenge from './game_steps/MaxiChallenge';
+import SeasonPicker from './game_steps/SeasonPicker';
 
 type SimProps = {
-    queens: Array<Queen>,
-    seasons?: Array<Season>
+    queens?: Array<Queen>, // if you pass queens in it's a custom cast
+    seasons?: Array<Season> // if you pass seasons in it's a predef cast
 }
 
 type SimState = {
@@ -39,7 +36,7 @@ export default class Sim extends React.Component<SimProps, SimState> {
             currentSeason: season,
             gameStatus: GameStatus.CastScreen
         });
-        this.scrollToTop();
+        scrollToTop();
     }
 
     proceed = () => {
@@ -48,12 +45,12 @@ export default class Sim extends React.Component<SimProps, SimState> {
         this.setState({
             gameStatus: status
         });
-        this.scrollToTop();
+        scrollToTop();
     }
 
     render() {
         return <div>
-            {(this.state.gameStatus == GameStatus.NotStarted && !this.props.seasons) &&
+            {(this.state.gameStatus == GameStatus.NotStarted && this.props.queens) &&
                 <CastPicker queens={this.props.queens} startSeason={this.startSeason}/>
             }
             {(this.state.gameStatus == GameStatus.NotStarted && this.props.seasons) &&
@@ -83,13 +80,6 @@ export default class Sim extends React.Component<SimProps, SimState> {
         } else {
             return false;
         }
-    }
-
-    scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
     }
 }
 

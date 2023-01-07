@@ -1,5 +1,5 @@
 import array from 'lodash/array';
-import Queen from "../classes/Queen";
+import Queen from "../classes/competitors/Queen";
 import Season from "../classes/Season";
 import { sortQueensByName } from './utils';
 

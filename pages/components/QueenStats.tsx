@@ -1,8 +1,8 @@
 import React from 'react';
-import Queen from '../classes/Queen';
+import Queen from '../classes/competitors/Queen';
 import { sortQueensByAttribute, sortQueensByAttributeReverse, sortQueensByName, sortQueensByNameReverse } from '../utils/utils';
-import Header from './lilbabies/Header';
-import QueenStatRow from './lilbabies/QueenStatRow';
+import Header from './lil_babies/Header';
+import QueenStatRow from './lil_babies/QueenStatRow';
 
 type QueenStatsProps = {
     queens: Array<Queen>
@@ -68,7 +68,7 @@ export default class QueenStats extends React.Component<QueenStatsProps, QueenSt
                     </thead>
                     <tbody>
                         {this.state.queens.map(queen => (
-                            <QueenStatRow queen={queen} key={queen.getName() + ' stat row'}/>
+                            <QueenStatRow queen={queen} key={queen.name + ' stat row'}/>
                         ))}
                     </tbody>
                 </table>

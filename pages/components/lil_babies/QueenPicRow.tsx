@@ -1,4 +1,4 @@
-import Queen from "../../classes/Queen";
+import Queen from "../../classes/competitors/Queen";
 
 type QueenPicRowProps = {
     queens: Array<Queen>

@@ -1,4 +1,4 @@
-export default class Challenge {
+export default class Episode {
     constructor() {
         
     }

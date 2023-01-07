@@ -1,6 +1,6 @@
 import React from 'react';
 import Season from '../../classes/Season';
-import Header from '../lilbabies/Header';
+import Header from '../lil_babies/Header';
 
 type MaxiChallengeProps = {
     season: Season | null

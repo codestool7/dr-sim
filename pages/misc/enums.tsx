@@ -10,3 +10,13 @@ export enum NavBarTab {
     PredefSeason,
     QueenStats
 }
+
+export enum MiniType {
+    Standard,
+    Puppet,
+    Reading
+}
+
+export enum MaxiType {
+
+}

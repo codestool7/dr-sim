@@ -1,12 +1,12 @@
 import React from 'react';
-import Queen from '../../classes/Queen';
-import BigText from '../lilbabies/BigText';
-import Button from '../lilbabies/Button';
-import NormalText from '../lilbabies/NormalText';
-import QueenCard from '../lilbabies/QueenCard';
+import Queen from '../../classes/competitors/Queen';
+import BigText from '../lil_babies/BigText';
+import Button from '../lil_babies/Button';
+import NormalText from '../lil_babies/NormalText';
+import QueenCard from '../lil_babies/QueenCard';
 import { addQueenToArray, addQueenToArrayAndSort, pickRandomlyFromArray, removeQueenFromArray } from '../../utils/utils';
 import Season from '../../classes/Season';
-import Header from '../lilbabies/Header';
+import Header from '../lil_babies/Header';
 
 type CastPickerProps = {
     queens: Array<Queen>,
@@ -53,7 +53,7 @@ export default class CastPicker extends React.Component<CastPickerProps, CastPic
                 });
             } else {
                 let nowShowing = this.state.searchableQueens.filter(queen => {
-                    return queen.getName().toLocaleLowerCase().includes(searchString);
+                    return queen.name.toLocaleLowerCase().includes(searchString);
                 });
                 this.setState({
                     showingQueens: nowShowing,
@@ -125,7 +125,7 @@ export default class CastPicker extends React.Component<CastPickerProps, CastPic
                 </div>
                 <div className="drag-cards">
                     {this.state.showingQueens.map(queen => (
-                        <QueenCard queen={queen} key={queen.getName() + ' showing card'} onSelect={() => this.selectQueen(queen)}/>
+                        <QueenCard queen={queen} key={queen.name + ' showing card'} onSelect={() => this.selectQueen(queen)}/>
                     ))}
                 </div>
                 <hr />
@@ -134,7 +134,7 @@ export default class CastPicker extends React.Component<CastPickerProps, CastPic
                         <BigText text={"Current Cast: " + this.state.selectedQueens.length} noBreak/>
                         <div className="drag-cards">
                         {this.state.selectedQueens.map(queen => (
-                            <QueenCard queen={queen} key={queen.getName() + ' selected card'} onRemove={() => this.removeQueen(queen)}/>
+                            <QueenCard queen={queen} key={queen.name + ' selected card'} onRemove={() => this.removeQueen(queen)}/>
                         ))}
                         </div>
                     </div>

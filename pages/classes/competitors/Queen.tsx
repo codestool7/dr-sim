@@ -1,13 +1,14 @@
 import array from 'lodash/array';
 import lang from 'lodash/lang';
-import { randomNumberWithMin } from "../utils/utils";
+import { randomNumberWithMin } from "../../utils/utils";
+import Competitor from './Competitor';
 
 type Relationship = {
     queen: Queen,
     score: number
 }
 
-export default class Queen {
+export default class Queen implements Competitor {
     /*trackRecord: string[] = [];
     friends = [];
     enemies = [];
@@ -45,10 +46,11 @@ export default class Queen {
     lipsyncStat: number;
     totalStat: number;
     image: string;
-    custom: boolean;
+    isCustom: boolean;
     sisters: Array<Relationship>;
+    active: boolean;
 
-    constructor(name: string, acting: number, comedy: number, dance: number, design: number, improv: number, runway: number, lipsync: number, image = "noimage", custom = false) {
+    constructor(name: string, acting: number, comedy: number, dance: number, design: number, improv: number, runway: number, lipsync: number, image = "noimage", isCustom = false) {
         this.name = name;
         this.actingStat = acting;
         this.comedyStat = comedy;
@@ -58,11 +60,11 @@ export default class Queen {
         this.runwayStat = runway;
         this.lipsyncStat = lipsync;
         this.totalStat = acting + comedy + dance + design + improv + runway + lipsync;
-        this.custom = custom;
+        this.isCustom = isCustom;
         if (image == "noimage") {
             this.image = "image/noimage.jpg";
         }
-        else if (custom == true) {
+        else if (isCustom == true) {
             this.image = image;
         }
         else {
@@ -70,6 +72,7 @@ export default class Queen {
         }
 
         this.sisters = [];
+        this.active = true;
     }
     
     calculateScores(min: number, max: number, stat = 0) {
@@ -145,50 +148,6 @@ export default class Queen {
             }
         }
         return worstie.queen;
-    }
-
-    getName() {
-        return this.name;
-    }
-
-    getActingStat() {
-        return this.actingStat;
-    }
-
-    getComedyStat() {
-        return this.comedyStat;
-    }
-
-    getDanceStat() {
-        return this.danceStat;
-    }
-
-    getDesignStat() {
-        return this.designStat;
-    }
-
-    getImprovStat() {
-        return this.improvStat;
-    }
-
-    getRunwayStat() {
-        return this.runwayStat;
-    }
-
-    getLipSyncStat() {
-        return this.lipsyncStat;
-    }
-
-    getTotalStat() {
-        return this.totalStat;
-    }
-
-    getImage() {
-        return this.image;
-    }
-
-    isCustom() {
-        return this.custom;
     }
 
     /*

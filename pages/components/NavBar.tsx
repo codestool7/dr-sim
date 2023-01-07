@@ -1,5 +1,5 @@
 import { NavBarTab } from "../misc/enums";
-import Tab from "./lilbabies/Tab";
+import Tab from "./lil_babies/Tab";
 
 type NavBarProps = {
     selectTab: (tab: NavBarTab) => void
