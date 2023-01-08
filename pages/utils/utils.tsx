@@ -63,7 +63,7 @@ export function addQueenToArrayAndSort(queens: Array<Queen>, queen: Queen) {
 // removes queen by object and returns new array
 export function removeQueenFromArray(queens: Array<Queen>, queen: Queen) {
     let removed = array.remove(queens, function(q: Queen) {
-        return lang.isEqual(q, queen);
+        return areQueensEqual(q, queen);
     });
     if (!removed || removed.length < 1) {
         throw new Error("failed to remove queen " + queen.name + " from array");
@@ -72,6 +72,11 @@ export function removeQueenFromArray(queens: Array<Queen>, queen: Queen) {
         throw new Error("somehow removed multiple queens named " + queen.name + " from array?? how did you do this bro");
     }
     return queens;
+}
+
+// are two queen objects equal
+export function areQueensEqual(q1: Queen, q2: Queen) {
+    return lang.isEqual(q1, q2);
 }
 
 export function scrollToTop() {

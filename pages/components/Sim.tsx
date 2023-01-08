@@ -10,6 +10,8 @@ import Button from './lil_babies/Button';
 import MiniChallenge from './game_steps/MiniChallenge';
 import MaxiChallenge from './game_steps/MaxiChallenge';
 import SeasonPicker from './game_steps/SeasonPicker';
+import writeEpisode from '../utils/writeEpisode';
+import Episode from '../classes/Episode';
 
 type SimProps = {
     queens?: Array<Queen>, // if you pass queens in it's a custom cast
@@ -18,15 +20,13 @@ type SimProps = {
 
 type SimState = {
     currentSeason: Season | null,
-    gameStatus: GameStatus,
-    elapsedEpisodes: number
-    //gameOptions: null
+    gameStatus: GameStatus
 }
 
 export default class Sim extends React.Component<SimProps, SimState> {
     constructor(props: SimProps) {
         super(props);
-        this.state = {currentSeason: null, gameStatus: GameStatus.NotStarted, elapsedEpisodes: 0};
+        this.state = {currentSeason: null, gameStatus: GameStatus.NotStarted};
     }
 
     startSeason = (season: Season) => {
@@ -42,9 +42,19 @@ export default class Sim extends React.Component<SimProps, SimState> {
     proceed = () => {
         let status = this.state.gameStatus;
         status++;
-        this.setState({
-            gameStatus: status
-        });
+        if (status == GameStatus.MiniChallenge && this.state.currentSeason) {
+            let season = this.state.currentSeason;
+            let newEp = writeEpisode(season);
+            season.addEpisode(newEp);
+            this.setState({
+                gameStatus: status,
+                currentSeason: season
+            });
+        } else {
+            this.setState({
+                gameStatus: status
+            });
+        }
         scrollToTop();
     }
 
@@ -56,17 +66,17 @@ export default class Sim extends React.Component<SimProps, SimState> {
             {(this.state.gameStatus == GameStatus.NotStarted && this.props.seasons) &&
                 <SeasonPicker seasons={this.props.seasons} startSeason={this.startSeason}/>
             }
-            {(this.state.gameStatus == GameStatus.CastScreen && this.state.elapsedEpisodes == 0) &&
+            {(this.state.gameStatus == GameStatus.CastScreen && this.state.currentSeason && this.state.currentSeason?.getEpisodeCount() == 0) &&
                 <FullCast season={this.state.currentSeason}/>
             }
-            {(this.state.gameStatus == GameStatus.CastScreen && this.state.elapsedEpisodes > 0) &&
+            {(this.state.gameStatus == GameStatus.CastScreen && this.state.currentSeason && this.state.currentSeason?.getEpisodeCount() > 0) &&
                 <SeasonProgress season={this.state.currentSeason}/>
             }
-            {(this.state.gameStatus == GameStatus.MiniChallenge) &&
-                <MiniChallenge season={this.state.currentSeason}/>
+            {(this.state.gameStatus == GameStatus.MiniChallenge && this.state.currentSeason) &&
+                <MiniChallenge episode={this.state.currentSeason.getCurrentEpisode()}/>
             }
-            {(this.state.gameStatus == GameStatus.MaxiChallenge) &&
-                <MaxiChallenge season={this.state.currentSeason}/>
+            {/*(this.state.gameStatus == GameStatus.MaxiChallenge && this.state.currentSeason) &&
+                <MaxiChallenge episode={this.state.currentSeason.getCurrentEpisode()}/>*/
             }
             {this.showProceed() &&
                 <Button text="Proceed" onClick={this.proceed}/>

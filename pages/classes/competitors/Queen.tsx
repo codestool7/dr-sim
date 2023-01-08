@@ -1,6 +1,5 @@
 import array from 'lodash/array';
-import lang from 'lodash/lang';
-import { randomNumberWithMin } from "../../utils/utils";
+import { areQueensEqual, randomNumberWithMin } from "../../utils/utils";
 import Competitor from './Competitor';
 
 type Relationship = {
@@ -10,9 +9,6 @@ type Relationship = {
 
 export default class Queen implements Competitor {
     /*trackRecord: string[] = [];
-    friends = [];
-    enemies = [];
-    sisters = [];
     miniEpisode = [];
     tCaptain = [];
     voteHerstory = [];
@@ -84,7 +80,7 @@ export default class Queen implements Competitor {
         this.sisters = [];
         for (let i = 0; i < queens.length; i++) {
             let queen = queens[i];
-            if (!this.isItMe(queen)) {
+            if (!areQueensEqual(this, queen)) {
                 let sis: Relationship = {queen: queen, score: 0};
                 this.sisters.push(sis);
             }
@@ -94,14 +90,9 @@ export default class Queen implements Competitor {
     // adjusts the relationship witht the given queen the number of points (positive or negative)
     adjustRelationship(queen: Queen, adjustment: number) {
         let sisIndex = array.findIndex(this.sisters, function(s: Relationship) {
-            return lang.isEqual(s.queen, queen);
+            return areQueensEqual(s.queen, queen);
         });
         this.sisters[sisIndex].score += adjustment;
-    }
-
-    // is given queen me? am I the drama?
-    isItMe(q: Queen) {
-        return lang.isEqual(this, q);
     }
 
     getFriends(): Array<Queen> {
@@ -125,7 +116,7 @@ export default class Queen implements Competitor {
     }
 
     bestSister(): Queen | null {
-        if(!this.sisters || this.sisters.length == 0) {
+        if (!this.sisters || this.sisters.length == 0) {
             return null;
         }
         let bestie = this.sisters[0];
@@ -138,7 +129,7 @@ export default class Queen implements Competitor {
     }
 
     worstSister(): Queen | null {
-        if(!this.sisters || this.sisters.length == 0) {
+        if (!this.sisters || this.sisters.length == 0) {
             return null;
         }
         let worstie = this.sisters[0];

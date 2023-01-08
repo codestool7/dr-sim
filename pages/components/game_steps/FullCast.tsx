@@ -16,7 +16,7 @@ export default class FullCast extends React.Component<FullCastProps, {}> {
             />
             {this.props.season &&
                 <div className="mainPart" id="MainBlock">
-                    {this.props.season.queens.map(queen => (
+                    {this.props.season.getAllQueens().map(queen => (
                         <div key={queen.name + ' full cast section'}>
                             <QueenPic queen={queen} key={queen.name + ' full cast queen pic'}/>
                             <BoldText text={queen.name} key={queen.name + ' full cast bold text'}/>

@@ -8,13 +8,24 @@ type QueenPicProps = {
 
 export default function QueenPic(props: QueenPicProps) {
     const picStyle = {
-        'border-color': props.color || "black"
+        borderColor: props.color || "black"
     };
 
     return (
-        <Image src={props.queen.image} alt={props.queen.name} width={105} height={105} /*style={picStyle}*//> // "border-color" doesn't work while not in quotes but won't let me put it in quotes either idk
+        <Image src={props.queen.image} alt={props.queen.name} width={105} height={105} style={picStyle} />
     );
 }
+
+
+// "border-color" doesn't work while not in quotes but won't let me put it in quotes either idk
+
+// rn I have borderColor but that's not actually taking effect, who knows
+
+
+
+
+
+
 
 /* let image = document.createElement("img");
 image.src = source;
