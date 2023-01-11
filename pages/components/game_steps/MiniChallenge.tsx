@@ -1,19 +1,37 @@
 import React from 'react';
+import Queen from '../../classes/competitors/Queen';
 import Episode from '../../classes/Episode';
+import { queensReads } from '../../misc/constants';
 import { MiniType } from '../../misc/enums';
+import { pickRandomlyFromArray, pickRandomlyFromArrayExcluding } from '../../utils/utils';
 import BoldText from '../lil_babies/BoldText';
 import Header from '../lil_babies/Header';
 import QueenPic from '../lil_babies/QueenPic';
 import QueenPicRow from '../lil_babies/QueenPicRow';
-import Reads from '../sometimes_parts/Reads';
 
 type MiniChallengeProps = {
-    episode: Episode
+    episode: Episode,
+    activeQueens: Array<Queen>
 }
 
-export default class MiniChallenge extends React.Component<MiniChallengeProps, {}> {
+type MiniChallengeState = {
+    allQueensReads: Array<QueensReads>
+}
+
+type QueensReads = {
+    reader: Queen,
+    reads: Array<Read>
+}
+
+type Read = {
+    victim: Queen,
+    read: string
+}
+
+export default class MiniChallenge extends React.Component<MiniChallengeProps, MiniChallengeState> {
     constructor(props: MiniChallengeProps) {
         super(props);
+        this.state = { allQueensReads: this.rollReads() };
     }
 
     render() {
@@ -25,7 +43,19 @@ export default class MiniChallenge extends React.Component<MiniChallengeProps, {
                 <BoldText text={this.props.episode.miniChallenge.description}/>
                 <hr />
                 {this.props.episode.miniChallenge.type == MiniType.Reading &&
-                    <Reads />
+                    this.state.allQueensReads.map((queensreads) => (
+                        <div>
+                            <QueenPic queen={queensreads.reader} key={queensreads.reader.name + ' mini reader pic'}/>
+                            <BoldText text={queensreads.reader.name} />
+                            <QueenPic queen={queensreads.reads[0].victim} key={queensreads.reader.name + ' mini victim 1 pic'}/>
+                            <BoldText text={queensreads.reads[0].victim.name} />
+                            <BoldText text={queensreads.reads[0].read} />
+                            <QueenPic queen={queensreads.reads[1].victim} key={queensreads.reader.name + ' mini victim 2 pic'}/>
+                            <BoldText text={queensreads.reads[1].victim.name} />
+                            <BoldText text={queensreads.reads[1].read} />
+                            <hr />
+                        </div>
+                    ))
                 }
                 {this.props.episode.miniWinners.length == 1 &&
                     <div>
@@ -43,7 +73,45 @@ export default class MiniChallenge extends React.Component<MiniChallengeProps, {
         </div>;
     }
 
-    // TODO this component just needs to roll reads
+    rollReads() {
+        const allQueensReads = new Array<QueensReads>;
+
+        for (let i = 0; i < this.props.activeQueens.length; i++) {
+            let reader = this.props.activeQueens[i];
+            let readableQueens = this.props.activeQueens.filter(queen => queen.name != reader.name);
+
+            let victim1 = pickRandomlyFromArray(readableQueens);
+            let read1 = this.getRead(queensReads, victim1);
+
+            let nowReadableQueens = readableQueens.filter(queen => queen.name != victim1.name);
+            
+            let victim2 = pickRandomlyFromArray(nowReadableQueens);
+            let read2 = this.getRead(queensReads, victim2, read1);
+
+            allQueensReads.push({
+                reader: reader,
+                reads: [
+                    { victim: victim1, read: read1 },
+                    { victim: victim2, read: read2 }
+                ]
+            });
+        }
+
+        return allQueensReads;
+    }
+
+    getRead(possibleReads: Array<{queen: string, reads: Array<string>}>, queen: Queen, exclude?: string): string {
+        let options;
+        if ((options = possibleReads.find(el => el.queen == queen.name)) || (options = possibleReads.find(el => el.queen == "General"))) {
+            if (exclude) {
+                return pickRandomlyFromArrayExcluding(options.reads, exclude);
+            } else {
+                return pickRandomlyFromArray(options.reads);
+            }
+        } else {
+            throw new Error("no read found :(");
+        }
+    }
 }
 
 

@@ -4,7 +4,7 @@ import Episode from "../classes/Episode";
 import Season from "../classes/Season";
 import { miniChallengeDescriptions1, miniChallengeDescriptions2 } from "../misc/constants";
 import { MiniType } from "../misc/enums";
-import { areQueensEqual, pickRandomlyFromArray, randomNumber } from "./utils";
+import { areQueensEqual, pickRandomlyFromArray, pickRandomlyFromArrayExcluding, randomNumber } from "./utils";
 
 export default function writeEpisode(season: Season): Episode {
     
@@ -41,10 +41,7 @@ function pickMiniWinners(season: Season): Array<Queen> {
         winners.push(winner);
     }else {
         let winner1: Queen = pickRandomlyFromArray(season.getActiveQueens());
-        let winner2: Queen;
-        do {
-            winner2 = pickRandomlyFromArray(season.getActiveQueens());
-        } while (areQueensEqual(winner1, winner2));
+        let winner2: Queen = pickRandomlyFromArrayExcluding(season.getActiveQueens(), winner1);
         winners.push(winner1);
         winners.push(winner2);
     }

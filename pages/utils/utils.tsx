@@ -7,9 +7,18 @@ type BallTheme = {
     themes: string
 }
 
+// pick an item randomly from an array and return it
 export function pickRandomlyFromArray(choices: Array<any>): any {
     let rand = randomNumber(choices.length);
     return choices[rand];
+}
+
+export function pickRandomlyFromArrayExcluding(choices: Array<any>, exclude: any): any {
+    let chosen: any;
+    do {
+        chosen = pickRandomlyFromArray(choices)
+    } while (chosen == exclude);
+    return chosen;
 }
 
 export function pickBallTheme(choices: Array<BallTheme>): BallTheme {

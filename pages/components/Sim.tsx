@@ -73,7 +73,7 @@ export default class Sim extends React.Component<SimProps, SimState> {
                 <SeasonProgress season={this.state.currentSeason}/>
             }
             {(this.state.gameStatus == GameStatus.MiniChallenge && this.state.currentSeason) &&
-                <MiniChallenge episode={this.state.currentSeason.getCurrentEpisode()}/>
+                <MiniChallenge episode={this.state.currentSeason.getCurrentEpisode()} activeQueens={this.state.currentSeason.getActiveQueens()}/>
             }
             {/*(this.state.gameStatus == GameStatus.MaxiChallenge && this.state.currentSeason) &&
                 <MaxiChallenge episode={this.state.currentSeason.getCurrentEpisode()}/>*/
